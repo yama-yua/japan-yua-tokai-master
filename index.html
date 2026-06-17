@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Japan-yua-tokai 商品マスタ（閲覧専用）</title>
+<style>
+  :root{--accent:#16a34a;--bg:#f9fafb;--surface:#fff;--border:#e5e7eb;--text:#111827;--text2:#6b7280;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Meiryo',sans-serif;background:var(--bg);color:var(--text);font-size:14px;}
+  header{background:var(--accent);color:#fff;padding:12px 20px;display:flex;align-items:center;gap:12px;}
+  header h1{font-size:16px;font-weight:700;}
+  header .badge{background:rgba(255,255,255,.2);border-radius:4px;padding:2px 8px;font-size:12px;}
+  header .updated{margin-left:auto;font-size:12px;opacity:.8;}
+  .readonly-badge{background:#fef9c3;color:#854d0e;border:1px solid #fde047;border-radius:4px;padding:4px 12px;font-size:12px;margin:10px 20px;}
+  .toolbar{padding:10px 20px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;background:var(--surface);border-bottom:1px solid var(--border);}
+  .search-box{padding:7px 12px;border:1px solid var(--border);border-radius:6px;font-size:13px;font-family:inherit;width:220px;}
+  select{padding:7px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;font-family:inherit;background:#fff;}
+  .count{font-size:12px;color:var(--text2);margin-left:auto;}
+  .tbl-wrap{overflow-x:auto;padding:0 20px 20px;}
+  table{width:100%;border-collapse:collapse;background:var(--surface);border-radius:8px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.08);}
+  th{background:#f3f4f6;padding:10px 12px;text-align:left;font-size:12px;color:var(--text2);border-bottom:1px solid var(--border);}
+  td{padding:9px 12px;border-bottom:1px solid var(--border);font-size:13px;}
+  tr:last-child td{border-bottom:none;}
+  tr:hover td{background:#f9fafb;}
+  code{font-size:11px;background:#f3f4f6;padding:2px 5px;border-radius:3px;font-family:'Courier New',monospace;}
+  .badge-s{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;}
+  .s-active{background:#dcfce7;color:#166534;}
+  .s-stop{background:#fef9c3;color:#854d0e;}
+  .s-dead{background:#fee2e2;color:#991b1b;}
+  .tabs{display:flex;gap:0;padding:0 20px;background:var(--surface);border-bottom:1px solid var(--border);}
+  .tab{padding:12px 18px;font-size:13px;cursor:pointer;border-bottom:2px solid transparent;color:var(--text2);}
+  .tab.active{border-bottom-color:var(--accent);color:var(--accent);font-weight:600;}
+  .page{display:none;} .page.active{display:block;}
+  .no-data{text-align:center;padding:40px;color:var(--text2);}
+</style>
+</head>
+<body>
+<header>
+  <h1>Japan-yua-tokai 統合マスタ</h1>
+  <span class="badge">閲覧専用</span>
+  <span class="updated" id="updated-at"></span>
+</header>
+<div class="readonly-badge">👁 このページは閲覧専用です。データの変更は社内ツール（localhost:8585）から行ってください。</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="switchTab('products')">商品マスタ</div>
+  <div class="tab" onclick="switchTab('customers')">取引先マスタ</div>
+  <div class="tab" onclick="switchTab('suppliers')">手配先マスタ</div>
+</div>
+
+<!-- 商品マスタ -->
+<div id="page-products" class="page active">
+  <div class="toolbar">
+    <input class="search-box" id="p-search" placeholder="商品名・コード・手配先で検索..." oninput="renderProducts()">
+    <select id="p-status" onchange="renderProducts()">
+      <option value="">すべての状態</option>
+      <option>販売中</option><option>販売停止</option><option>廃番</option>
+    </select>
+    <select id="p-supplier" onchange="renderProducts()"><option value="">すべての手配先</option></select>
+    <span class="count" id="p-count"></span>
+  </div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>商品コード</th><th>商品名称</th><th>フリガナ</th><th>手配先</th><th>単位</th><th>原単価</th><th>旧コード</th><th>状態</th></tr></thead>
+      <tbody id="p-tbody"><tr><td colspan="8" class="no-data">読み込み中...</td></tr></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- 取引先マスタ -->
+<div id="page-customers" class="page">
+  <div class="toolbar">
+    <input class="search-box" id="c-search" placeholder="店舗名・コードで検索..." oninput="renderCustomers()">
+    <select id="c-system" onchange="renderCustomers()">
+      <option value="">すべての区分</option>
+      <option>タノム</option><option>その他</option><option>インフォマート</option><option>アスピット</option>
+    </select>
+    <span class="count" id="c-count"></span>
+  </div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>取引先コード</th><th>店舗名</th><th>法人名</th><th>システム区分</th><th>担当者</th><th>電話番号</th></tr></thead>
+      <tbody id="c-tbody"><tr><td colspan="6" class="no-data">読み込み中...</td></tr></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- 手配先マスタ -->
+<div id="page-suppliers" class="page">
+  <div class="toolbar">
+    <input class="search-box" id="s-search" placeholder="手配先名・コードで検索..." oninput="renderSuppliers()">
+    <span class="count" id="s-count"></span>
+  </div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>手配先コード</th><th>手配先名称</th><th>フリガナ</th></tr></thead>
+      <tbody id="s-tbody"><tr><td colspan="3" class="no-data">読み込み中...</td></tr></tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+let allData = { products: [], customers: [], suppliers: [], updated: '' };
+
+fetch('data.json?v=' + Date.now())
+  .then(r => r.json())
+  .then(d => {
+    allData = d;
+    document.getElementById('updated-at').textContent = 'データ更新日時: ' + d.updated;
+    const names = [...new Set(d.products.map(p => p.supplier_name).filter(Boolean))].sort();
+    const sel = document.getElementById('p-supplier');
+    sel.innerHTML = '<option value="">すべての手配先</option>' + names.map(n => `<option>${n}</option>`).join('');
+    renderProducts(); renderCustomers(); renderSuppliers();
+  })
+  .catch(() => {
+    ['p-tbody','c-tbody','s-tbody'].forEach(id =>
+      document.getElementById(id).innerHTML = '<tr><td colspan="8" class="no-data">データを読み込めませんでした</td></tr>');
+  });
+
+function switchTab(name) {
+  document.querySelectorAll('.tab').forEach((t,i) => {
+    t.classList.toggle('active', ['products','customers','suppliers'][i] === name);
+  });
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+}
+
+function statusClass(s) {
+  return s==='販売中'?'s-active':s==='販売停止'?'s-stop':'s-dead';
+}
+
+function renderProducts() {
+  const q   = document.getElementById('p-search').value.toLowerCase();
+  const st  = document.getElementById('p-status').value;
+  const sup = document.getElementById('p-supplier').value;
+  const list = allData.products.filter(p =>
+    (!q || p.name.toLowerCase().includes(q) || p.code.includes(q) || (p.supplier_name||'').includes(q) || (p.code_old||'').includes(q)) &&
+    (!st  || p.status === st) &&
+    (!sup || p.supplier_name === sup)
+  );
+  document.getElementById('p-count').textContent = `${list.length}件表示（全${allData.products.length}件）`;
+  document.getElementById('p-tbody').innerHTML = list.length === 0
+    ? '<tr><td colspan="8" class="no-data">該当なし</td></tr>'
+    : list.map(p => `<tr>
+        <td><code>${p.code}</code></td>
+        <td>${p.name}</td>
+        <td style="color:var(--text2);font-size:12px;">${p.kana||''}</td>
+        <td>${p.supplier_name||''}</td>
+        <td style="color:var(--text2);">${p.unit||''}</td>
+        <td style="text-align:right;font-weight:600;">¥${(p.price||0).toLocaleString()}</td>
+        <td><code style="font-size:11px;">${p.code_old||''}</code></td>
+        <td><span class="badge-s ${statusClass(p.status)}">${p.status}</span></td>
+      </tr>`).join('');
+}
+
+function renderCustomers() {
+  const q  = document.getElementById('c-search').value.toLowerCase();
+  const sy = document.getElementById('c-system').value;
+  const list = allData.customers.filter(c =>
+    (!q || (c.store||'').toLowerCase().includes(q) || (c.code||'').includes(q) || (c.corp||'').toLowerCase().includes(q)) &&
+    (!sy || c.system === sy)
+  );
+  document.getElementById('c-count').textContent = `${list.length}件表示（全${allData.customers.length}件）`;
+  document.getElementById('c-tbody').innerHTML = list.length === 0
+    ? '<tr><td colspan="6" class="no-data">該当なし</td></tr>'
+    : list.map(c => `<tr>
+        <td><code>${c.code||''}</code></td>
+        <td>${c.store||''}</td>
+        <td style="color:var(--text2);">${c.corp||''}</td>
+        <td>${c.system||''}</td>
+        <td style="color:var(--text2);">${c.person||''}</td>
+        <td style="color:var(--text2);">${c.tel||''}</td>
+      </tr>`).join('');
+}
+
+function renderSuppliers() {
+  const q = document.getElementById('s-search').value.toLowerCase();
+  const list = allData.suppliers.filter(s =>
+    !q || (s.name||'').toLowerCase().includes(q) || (s.code||'').includes(q)
+  );
+  document.getElementById('s-count').textContent = `${list.length}件表示（全${allData.suppliers.length}件）`;
+  document.getElementById('s-tbody').innerHTML = list.length === 0
+    ? '<tr><td colspan="3" class="no-data">該当なし</td></tr>'
+    : list.map(s => `<tr>
+        <td><code>${s.code||''}</code></td>
+        <td>${s.name||''}</td>
+        <td style="color:var(--text2);">${s.kana||''}</td>
+      </tr>`).join('');
+}
+</script>
+</body>
+</html>
