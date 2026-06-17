@@ -23,6 +23,15 @@
   td{padding:9px 12px;border-bottom:1px solid var(--border);font-size:13px;}
   tr:last-child td{border-bottom:none;}
   tr:hover td{background:#f9fafb;}
+  /* カード（スマホ用） */
+  .cards{padding:0 12px 20px;display:flex;flex-direction:column;gap:10px;}
+  .card{background:var(--surface);border-radius:8px;padding:12px 14px;box-shadow:0 1px 3px rgba(0,0,0,.08);}
+  .card-title{font-weight:600;font-size:14px;margin-bottom:6px;}
+  .card-code{font-size:11px;background:#f3f4f6;padding:2px 6px;border-radius:3px;font-family:'Courier New',monospace;margin-right:6px;}
+  .card-row{display:flex;gap:6px;font-size:12px;color:var(--text2);margin-top:3px;flex-wrap:wrap;}
+  .card-label{font-weight:600;color:#374151;}
+  @media(min-width:640px){.cards{display:none;}.tbl-wrap{display:block;}}
+  @media(max-width:639px){.tbl-wrap{display:none;}.cards{display:flex;}}
   code{font-size:11px;background:#f3f4f6;padding:2px 5px;border-radius:3px;font-family:'Courier New',monospace;}
   .badge-s{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;}
   .s-active{background:#dcfce7;color:#166534;}
@@ -66,6 +75,7 @@
       <tbody id="p-tbody"><tr><td colspan="8" class="no-data">読み込み中...</td></tr></tbody>
     </table>
   </div>
+  <div class="cards" id="p-cards"></div>
 </div>
 
 <!-- 取引先マスタ -->
@@ -84,6 +94,7 @@
       <tbody id="c-tbody"><tr><td colspan="6" class="no-data">読み込み中...</td></tr></tbody>
     </table>
   </div>
+  <div class="cards" id="c-cards"></div>
 </div>
 
 <!-- 手配先マスタ -->
@@ -140,8 +151,8 @@ function renderProducts() {
     (!sup || p.supplier_name === sup)
   );
   document.getElementById('p-count').textContent = `${list.length}件表示（全${allData.products.length}件）`;
-  document.getElementById('p-tbody').innerHTML = list.length === 0
-    ? '<tr><td colspan="8" class="no-data">該当なし</td></tr>'
+  const noP = '<tr><td colspan="8" class="no-data">該当なし</td></tr>';
+  document.getElementById('p-tbody').innerHTML = list.length === 0 ? noP
     : list.map(p => `<tr>
         <td><code>${p.code}</code></td>
         <td>${p.name}</td>
@@ -152,6 +163,21 @@ function renderProducts() {
         <td><code style="font-size:11px;">${p.code_old||''}</code></td>
         <td><span class="badge-s ${statusClass(p.status)}">${p.status}</span></td>
       </tr>`).join('');
+  document.getElementById('p-cards').innerHTML = list.length === 0
+    ? '<div style="text-align:center;padding:40px;color:var(--text2);">該当なし</div>'
+    : list.map(p => `<div class="card">
+        <div class="card-title">
+          <span class="card-code">${p.code}</span>
+          <span class="badge-s ${statusClass(p.status)}" style="font-size:11px;">${p.status}</span>
+        </div>
+        <div style="font-size:14px;font-weight:600;margin:4px 0;">${p.name}</div>
+        <div class="card-row">
+          <span class="card-label">手配先</span>${p.supplier_name||''}
+          <span class="card-label">単位</span>${p.unit||''}
+          <span class="card-label">原単価</span>¥${(p.price||0).toLocaleString()}
+        </div>
+        ${p.code_old ? `<div class="card-row"><span class="card-label">旧コード</span><code>${p.code_old}</code></div>` : ''}
+      </div>`).join('');
 }
 
 function renderCustomers() {
@@ -162,8 +188,8 @@ function renderCustomers() {
     (!sy || c.system === sy)
   );
   document.getElementById('c-count').textContent = `${list.length}件表示（全${allData.customers.length}件）`;
-  document.getElementById('c-tbody').innerHTML = list.length === 0
-    ? '<tr><td colspan="6" class="no-data">該当なし</td></tr>'
+  const noC = '<tr><td colspan="6" class="no-data">該当なし</td></tr>';
+  document.getElementById('c-tbody').innerHTML = list.length === 0 ? noC
     : list.map(c => `<tr>
         <td><code>${c.code||''}</code></td>
         <td>${c.store||''}</td>
@@ -172,6 +198,20 @@ function renderCustomers() {
         <td style="color:var(--text2);">${c.person||''}</td>
         <td style="color:var(--text2);">${c.tel||''}</td>
       </tr>`).join('');
+  document.getElementById('c-cards').innerHTML = list.length === 0
+    ? '<div style="text-align:center;padding:40px;color:var(--text2);">該当なし</div>'
+    : list.map(c => `<div class="card">
+        <div class="card-title">
+          <span class="card-code">${c.code||''}</span>
+          <span style="font-size:12px;color:var(--text2);">${c.system||''}</span>
+        </div>
+        <div style="font-size:14px;font-weight:600;margin:4px 0;">${c.store||''}</div>
+        <div class="card-row"><span class="card-label">法人名</span>${c.corp||''}</div>
+        <div class="card-row">
+          <span class="card-label">担当</span>${c.person||''}
+          ${c.tel ? `　<span class="card-label">TEL</span><a href="tel:${c.tel}" style="color:var(--accent);">${c.tel}</a>` : ''}
+        </div>
+      </div>`).join('');
 }
 
 function renderSuppliers() {
