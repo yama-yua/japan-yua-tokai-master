@@ -28,10 +28,14 @@
   /* カード（スマホ用） */
   .cards{padding:0 12px 20px;display:flex;flex-direction:column;gap:10px;}
   .card{background:var(--surface);border-radius:8px;padding:12px 14px;box-shadow:0 1px 3px rgba(0,0,0,.08);}
-  .card-title{font-weight:600;font-size:14px;margin-bottom:6px;}
+  .card-title{font-weight:600;font-size:14px;margin-bottom:6px;display:flex;align-items:center;justify-content:space-between;gap:6px;}
+  .card-title-left{display:flex;align-items:center;gap:6px;flex-wrap:wrap;flex:1;}
   .card-code{font-size:11px;background:#f3f4f6;padding:2px 6px;border-radius:3px;font-family:'Courier New',monospace;margin-right:6px;}
   .card-row{display:flex;gap:6px;font-size:12px;color:var(--text2);margin-top:3px;flex-wrap:wrap;}
   .card-label{font-weight:600;color:#374151;}
+  .copy-btn{background:none;border:1px solid var(--border);border-radius:4px;padding:2px 6px;font-size:11px;color:var(--text2);cursor:pointer;white-space:nowrap;flex-shrink:0;}
+  .copy-btn:active{background:#f3f4f6;}
+  #copy-toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1e2130;color:#fff;padding:8px 18px;border-radius:8px;font-size:13px;z-index:9999;display:none;pointer-events:none;}
   @media(min-width:640px){.cards{display:none;}.tbl-wrap{display:block;}}
   @media(max-width:639px){.hide-sp{display:none;}.cards{display:flex;}}
   code{font-size:11px;background:#f3f4f6;padding:2px 5px;border-radius:3px;font-family:'Courier New',monospace;}
@@ -139,8 +143,29 @@
   </div>
 </div>
 
+<div id="copy-toast">コピーしました</div>
+
 <script>
 let allData = { products: [], customers: [], suppliers: [], updated: '' };
+
+function copyText(text) {
+  navigator.clipboard.writeText(text).catch(() => {
+    const ta = document.createElement('textarea');
+    ta.value = text; document.body.appendChild(ta); ta.select();
+    document.execCommand('copy'); document.body.removeChild(ta);
+  });
+  const t = document.getElementById('copy-toast');
+  t.style.display = 'block';
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => t.style.display = 'none', 1500);
+}
+
+function matchQuery(q, ...fields) {
+  if (!q) return true;
+  const terms = q.trim().split(/\s+/).filter(Boolean);
+  const text = fields.filter(Boolean).join(' ').toLowerCase();
+  return terms.every(t => text.includes(t));
+}
 
 fetch('data.json?v=' + Date.now())
   .then(r => r.json())
@@ -189,7 +214,7 @@ function renderProducts() {
   const st  = document.getElementById('p-status').value;
   const sup = document.getElementById('p-supplier').value;
   const list = allData.products.filter(p =>
-    (!q || p.name.toLowerCase().includes(q) || p.code.includes(q) || (p.supplier_name||'').includes(q) || (p.code_old||'').includes(q)) &&
+    matchQuery(q, p.name, p.code, p.supplier_name, p.code_old, p.kana) &&
     (!st  || p.status === st) &&
     (!sup || p.supplier_name === sup)
   );
@@ -208,10 +233,15 @@ function renderProducts() {
       </tr>`).join('');
   document.getElementById('p-cards').innerHTML = list.length === 0
     ? '<div style="text-align:center;padding:40px;color:var(--text2);">該当なし</div>'
-    : list.map(p => `<div class="card">
+    : list.map(p => {
+        const copyVal = (p.code + ' ' + p.name).replace(/'/g, "\\'");
+        return `<div class="card">
         <div class="card-title">
-          <span class="card-code">${p.code}</span>
-          <span class="badge-s ${statusClass(p.status)}" style="font-size:11px;">${p.status}</span>
+          <div class="card-title-left">
+            <span class="card-code">${p.code}</span>
+            <span class="badge-s ${statusClass(p.status)}" style="font-size:11px;">${p.status}</span>
+          </div>
+          <button class="copy-btn" onclick="copyText('${copyVal}')">📋 コピー</button>
         </div>
         <div style="font-size:14px;font-weight:600;margin:4px 0;">${p.name}</div>
         <div class="card-row">
@@ -220,14 +250,15 @@ function renderProducts() {
           <span class="card-label">原単価</span>${priceVisible ? '¥'+(p.price||0).toLocaleString() : '———'}
         </div>
         ${p.code_old ? `<div class="card-row"><span class="card-label">旧コード</span><code>${p.code_old}</code></div>` : ''}
-      </div>`).join('');
+      </div>`;
+      }).join('');
 }
 
 function renderCustomers() {
   const q  = document.getElementById('c-search').value.toLowerCase();
   const sy = document.getElementById('c-system').value;
   const list = allData.customers.filter(c =>
-    (!q || (c.store||'').toLowerCase().includes(q) || (c.code||'').includes(q) || (c.corp||'').toLowerCase().includes(q)) &&
+    matchQuery(q, c.store, c.code, c.corp, c.kana) &&
     (!sy || c.system === sy)
   );
   document.getElementById('c-count').textContent = `${list.length}件表示（全${allData.customers.length}件）`;
