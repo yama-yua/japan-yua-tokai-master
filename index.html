@@ -35,6 +35,9 @@
   .card-label{font-weight:600;color:#374151;}
   .copy-btn{background:none;border:1px solid var(--border);border-radius:4px;padding:2px 6px;font-size:11px;color:var(--text2);cursor:pointer;white-space:nowrap;flex-shrink:0;}
   .copy-btn:active{background:#f3f4f6;}
+  .copyable{cursor:pointer;border-radius:3px;transition:background .12s;}
+  .copyable:hover{background:rgba(59,130,246,.10);}
+  .copyable:active{background:rgba(59,130,246,.22);}
   #copy-toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1e2130;color:#fff;padding:8px 18px;border-radius:8px;font-size:13px;z-index:9999;display:none;pointer-events:none;}
   @media(min-width:640px){.cards{display:none;}.tbl-wrap{display:block;}}
   @media(max-width:639px){.hide-sp{display:none;}.cards{display:flex;}}
@@ -222,8 +225,8 @@ function renderProducts() {
   const noP = '<tr><td colspan="8" class="no-data">該当なし</td></tr>';
   document.getElementById('p-tbody').innerHTML = list.length === 0 ? noP
     : list.map(p => `<tr>
-        <td><code>${p.code}</code></td>
-        <td>${p.name}</td>
+        <td><code class="copyable" title="クリックでコピー" onclick="copyText('${p.code.replace(/'/g,"\\'")}')">${p.code}</code></td>
+        <td class="copyable" title="クリックでコピー" onclick="copyText('${p.name.replace(/'/g,"\\'")}')">${p.name}</td>
         <td style="color:var(--text2);font-size:12px;">${p.kana||''}</td>
         <td>${p.supplier_name||''}</td>
         <td style="color:var(--text2);">${p.unit||''}</td>
@@ -238,12 +241,12 @@ function renderProducts() {
         return `<div class="card">
         <div class="card-title">
           <div class="card-title-left">
-            <span class="card-code">${p.code}</span>
+            <span class="card-code copyable" title="コードをコピー" onclick="copyText('${p.code.replace(/'/g,"\\'")}')">${p.code}</span>
             <span class="badge-s ${statusClass(p.status)}" style="font-size:11px;">${p.status}</span>
           </div>
           <button class="copy-btn" onclick="copyText('${copyVal}')">📋 コピー</button>
         </div>
-        <div style="font-size:14px;font-weight:600;margin:4px 0;">${p.name}</div>
+        <div class="copyable" title="商品名をコピー" style="font-size:14px;font-weight:600;margin:4px 0;" onclick="copyText('${p.name.replace(/'/g,"\\'")}')">${p.name}</div>
         <div class="card-row">
           <span class="card-label">手配先</span>${p.supplier_name||''}
           <span class="card-label">単位</span>${p.unit||''}
