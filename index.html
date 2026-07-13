@@ -129,8 +129,8 @@
 <div id="page-customers" class="page">
   <div class="tbl-wrap hide-sp">
     <table>
-      <thead><tr><th>取引先コード</th><th>店舗名</th><th>法人名</th><th>システム区分</th><th>担当者</th><th>電話番号</th></tr></thead>
-      <tbody id="c-tbody"><tr><td colspan="6" class="no-data">読み込み中...</td></tr></tbody>
+      <thead><tr><th>取引先コード</th><th>店舗名</th><th>法人名</th><th>システム区分</th><th>担当者</th><th>電話番号</th><th>住所</th></tr></thead>
+      <tbody id="c-tbody"><tr><td colspan="7" class="no-data">読み込み中...</td></tr></tbody>
     </table>
   </div>
   <div class="cards" id="c-cards"></div>
@@ -140,8 +140,8 @@
 <div id="page-suppliers" class="page">
   <div class="tbl-wrap">
     <table>
-      <thead><tr><th>手配先コード</th><th>手配先名称</th><th>フリガナ</th></tr></thead>
-      <tbody id="s-tbody"><tr><td colspan="3" class="no-data">読み込み中...</td></tr></tbody>
+      <thead><tr><th>手配先コード</th><th>手配先名称</th><th>フリガナ</th><th>電話番号</th></tr></thead>
+      <tbody id="s-tbody"><tr><td colspan="4" class="no-data">読み込み中...</td></tr></tbody>
     </table>
   </div>
 </div>
@@ -265,15 +265,16 @@ function renderCustomers() {
     (!sy || c.system === sy)
   );
   document.getElementById('c-count').textContent = `${list.length}件表示（全${allData.customers.length}件）`;
-  const noC = '<tr><td colspan="6" class="no-data">該当なし</td></tr>';
+  const noC = '<tr><td colspan="7" class="no-data">該当なし</td></tr>';
   document.getElementById('c-tbody').innerHTML = list.length === 0 ? noC
     : list.map(c => `<tr>
         <td><code>${c.code||''}</code></td>
-        <td>${c.store||''}</td>
+        <td class="copyable" title="クリックでコピー" onclick="copyText('${(c.store||'').replace(/'/g,"\\'")}')">${c.store||''}</td>
         <td style="color:var(--text2);">${c.corp||''}</td>
         <td>${c.system||''}</td>
         <td style="color:var(--text2);">${c.person||''}</td>
-        <td style="color:var(--text2);">${c.tel||''}</td>
+        <td class="copyable" title="クリックでコピー" onclick="copyText('${(c.tel||'').replace(/'/g,"\\'")}')" style="color:var(--text2);">${c.tel||''}</td>
+        <td class="copyable" title="クリックでコピー" onclick="copyText('${(c.address||'').replace(/'/g,"\\'")}')" style="color:var(--text2);font-size:12px;">${c.address||''}</td>
       </tr>`).join('');
   document.getElementById('c-cards').innerHTML = list.length === 0
     ? '<div style="text-align:center;padding:40px;color:var(--text2);">該当なし</div>'
@@ -282,12 +283,11 @@ function renderCustomers() {
           <span class="card-code">${c.code||''}</span>
           <span style="font-size:12px;color:var(--text2);">${c.system||''}</span>
         </div>
-        <div style="font-size:14px;font-weight:600;margin:4px 0;">${c.store||''}</div>
+        <div class="copyable" style="font-size:14px;font-weight:600;margin:4px 0;" title="店舗名をコピー" onclick="copyText('${(c.store||'').replace(/'/g,"\\'")}')">${c.store||''}</div>
         <div class="card-row"><span class="card-label">法人名</span>${c.corp||''}</div>
-        <div class="card-row">
-          <span class="card-label">担当</span>${c.person||''}
-          ${c.tel ? `　<span class="card-label">TEL</span><a href="tel:${c.tel}" style="color:var(--accent);">${c.tel}</a>` : ''}
-        </div>
+        <div class="card-row"><span class="card-label">担当</span>${c.person||''}</div>
+        ${c.tel ? `<div class="card-row"><span class="card-label">TEL</span><a href="tel:${c.tel}" style="color:var(--accent);" class="copyable" onclick="event.preventDefault();copyText('${c.tel.replace(/'/g,"\\'")}')">${c.tel}</a></div>` : ''}
+        ${c.address ? `<div class="card-row copyable" title="住所をコピー" onclick="copyText('${(c.address||'').replace(/'/g,"\\'")}')"><span class="card-label">住所</span>${c.zip?'〒'+c.zip+'　':''}${c.address}</div>` : ''}
       </div>`).join('');
 }
 
@@ -298,11 +298,12 @@ function renderSuppliers() {
   );
   document.getElementById('s-count').textContent = `${list.length}件表示（全${allData.suppliers.length}件）`;
   document.getElementById('s-tbody').innerHTML = list.length === 0
-    ? '<tr><td colspan="3" class="no-data">該当なし</td></tr>'
+    ? '<tr><td colspan="4" class="no-data">該当なし</td></tr>'
     : list.map(s => `<tr>
         <td><code>${s.code||''}</code></td>
-        <td>${s.name||''}</td>
+        <td class="copyable" title="クリックでコピー" onclick="copyText('${(s.name||'').replace(/'/g,"\\'")}')">${s.name||''}</td>
         <td style="color:var(--text2);">${s.kana||''}</td>
+        <td class="copyable" title="クリックでコピー" onclick="copyText('${(s.tel||'').replace(/'/g,"\\'")}')" style="color:var(--text2);">${s.tel||''}</td>
       </tr>`).join('');
 }
 </script>
