@@ -1,5 +1,5 @@
 {
-  "updated": "2026/07/29 08:00",
+  "updated": "2026/07/29 15:00",
   "products": [
     {
       "code": "13010001",
@@ -2384,7 +2384,7 @@
       "name": "【手配品】HEIKO 透明カップ A-PET 平蓋 98mm口径用 C穴 50個 #004525025",
       "kana": "HEIKO ﾄｳﾒｲｶｯﾌﾟ A-PET ﾋﾗﾌﾀ 98mmｺｳｹｲﾖｳ Cｱﾅ 50ｺ #004525025",
       "unit": "袋",
-      "price": 235.0,
+      "price": 273.0,
       "supplier_name": "(株)シモジマ",
       "status": "販売中",
       "code_old": "#004525025"
@@ -3466,7 +3466,7 @@
       "unit": "袋",
       "price": 408.0,
       "supplier_name": "(株)シモジマ",
-      "status": "販売中",
+      "status": "販売停止",
       "code_old": "3939"
     },
     {
@@ -3682,7 +3682,7 @@
       "unit": "袋",
       "price": 576.0,
       "supplier_name": "(株)シモジマ",
-      "status": "販売中",
+      "status": "廃番",
       "code_old": "#004491016"
     },
     {
@@ -3754,7 +3754,7 @@
       "unit": "束",
       "price": 960.0,
       "supplier_name": "(株)シモジマ",
-      "status": "販売中",
+      "status": "廃番",
       "code_old": "#005360310"
     },
     {
@@ -4150,7 +4150,7 @@
       "unit": "本",
       "price": 540.0,
       "supplier_name": "(株)シモジマ",
-      "status": "販売中",
+      "status": "廃番",
       "code_old": "#007715190"
     },
     {
@@ -4282,7 +4282,7 @@
       "unit": "袋",
       "price": 264.0,
       "supplier_name": "(株)シモジマ",
-      "status": "販売中",
+      "status": "廃番",
       "code_old": "#004527155"
     },
     {
@@ -4294,7 +4294,7 @@
       "unit": "袋",
       "price": 312.0,
       "supplier_name": "(株)シモジマ",
-      "status": "販売中",
+      "status": "廃番",
       "code_old": "#004527157"
     },
     {
@@ -4390,7 +4390,7 @@
       "unit": "袋",
       "price": 720.0,
       "supplier_name": "(株)シモジマ",
-      "status": "販売中",
+      "status": "廃番",
       "code_old": "#004527154"
     },
     {
@@ -4702,7 +4702,7 @@
       "unit": "袋",
       "price": 230.0,
       "supplier_name": "(株)シモジマ",
-      "status": "販売中",
+      "status": "販売停止",
       "code_old": "#004514144"
     },
     {
@@ -5002,7 +5002,7 @@
       "unit": "袋",
       "price": 864.0,
       "supplier_name": "(株)シモジマ",
-      "status": "販売中",
+      "status": "廃番",
       "code_old": "#004248004"
     },
     {
@@ -5146,7 +5146,7 @@
       "unit": "袋",
       "price": 264.0,
       "supplier_name": "(株)シモジマ",
-      "status": "販売中",
+      "status": "廃番",
       "code_old": "#004180401"
     },
     {
@@ -5266,7 +5266,7 @@
       "unit": "袋",
       "price": 434.0,
       "supplier_name": "(株)シモジマ",
-      "status": "販売中",
+      "status": "廃番",
       "code_old": "#004180201"
     },
     {
@@ -5374,7 +5374,7 @@
       "unit": "袋",
       "price": 312.0,
       "supplier_name": "(株)シモジマ",
-      "status": "販売中",
+      "status": "廃番",
       "code_old": "#004180410"
     },
     {
@@ -5446,7 +5446,7 @@
       "unit": "袋",
       "price": 850.0,
       "supplier_name": "(株)シモジマ",
-      "status": "販売中",
+      "status": "廃番",
       "code_old": "1636"
     },
     {
@@ -5710,7 +5710,7 @@
       "unit": "束",
       "price": 2694.0,
       "supplier_name": "(株)シモジマ",
-      "status": "販売中",
+      "status": "販売停止",
       "code_old": "006638373"
     },
     {
@@ -6154,7 +6154,7 @@
       "unit": "箱",
       "price": 1680.0,
       "supplier_name": "(株)シモジマ",
-      "status": "販売中",
+      "status": "廃番",
       "code_old": "#004738250"
     },
     {
@@ -6190,7 +6190,7 @@
       "unit": "袋",
       "price": 595.0,
       "supplier_name": "(株)シモジマ",
-      "status": "販売中",
+      "status": "廃番",
       "code_old": "#004248059"
     },
     {
@@ -6394,7 +6394,7 @@
       "unit": "袋",
       "price": 240.0,
       "supplier_name": "(株)シモジマ",
-      "status": "販売中",
+      "status": "販売停止",
       "code_old": "3251"
     },
     {
@@ -6598,7 +6598,7 @@
       "unit": "袋",
       "price": 388.0,
       "supplier_name": "(株)シモジマ",
-      "status": "販売中",
+      "status": "販売停止",
       "code_old": "3323"
     },
     {
@@ -12536,7 +12536,7 @@
       "name": "TN40 紐付きレジ袋 白色 100枚入",
       "kana": "TN40 ﾋﾓﾂｷﾚｼﾞﾌﾞｸﾛ ｼﾛｲﾛ 100ﾏｲｲﾘ",
       "unit": "冊",
-      "price": 200.0,
+      "price": 245.0,
       "supplier_name": "ハウスホールドジャパン(株)",
       "status": "販売中",
       "code_old": "TN40"
@@ -12560,7 +12560,7 @@
       "name": "チャック付きポリ袋 CH-4 透明 1CS/4000枚",
       "kana": "ﾁｬｯｸﾂｷﾎﾟﾘﾌﾞｸﾛ CH-4 ﾄｳﾒｲ 1CS/4000ﾏｲ",
       "unit": "CS",
-      "price": 10440.0,
+      "price": 11720.0,
       "supplier_name": "ハウスホールドジャパン(株)",
       "status": "販売中",
       "code_old": "3871"
@@ -12644,7 +12644,7 @@
       "name": "ポリ袋NO13 02 規格袋紐付 透明 100枚",
       "kana": "ﾎﾟﾘﾌﾞｸﾛ No13 02 ｷｶｸﾌﾞｸﾛ ﾋﾓﾂｷ ﾄｳﾒｲ 100ﾏｲ",
       "unit": "冊",
-      "price": 202.0,
+      "price": 193.0,
       "supplier_name": "ハウスホールドジャパン(株)",
       "status": "販売中",
       "code_old": "JE13"
@@ -12656,7 +12656,7 @@
       "name": "ポリ袋NO15 02 規格袋紐付 透明 100枚",
       "kana": "ﾎﾟﾘﾌﾞｸﾛ No15 02 ｷｶｸﾌﾞｸﾛ ﾋﾓﾂｷ ﾄｳﾒｲﾏｲ",
       "unit": "冊",
-      "price": 276.0,
+      "price": 264.0,
       "supplier_name": "ハウスホールドジャパン(株)",
       "status": "販売中",
       "code_old": "JE15"
@@ -12716,7 +12716,7 @@
       "name": "業務用 GT43 透明45L 0.05 ゴミ袋 10枚",
       "kana": "ｷﾞｮｳﾑﾖｳGT43 ﾄｳﾒｲ45L",
       "unit": "冊",
-      "price": 210.0,
+      "price": 203.0,
       "supplier_name": "ハウスホールドジャパン(株)",
       "status": "販売中",
       "code_old": "22"
