@@ -296,7 +296,7 @@ function openProductDetail(idx) {
     ['原単価', priceVisible ? '¥' + (p.price||0).toLocaleString() : '（非表示）'],
     ['状態', `<span class="badge-s ${statusClass(p.status)}">${p.status||''}</span>`],
     ['消費税区分', p.reduced_tax ? '軽減税率（8%）' : '標準税率（10%）'],
-    ['JANコード', jan ? `<span class="jan-copy"><span class="jan-code copyable" onclick="copyText('${esc(jan)}')" title="クリックでコピー">${jan}</span><button class="copy-btn" onclick="copyText('${esc(jan)}')">コピー</button></span>` : ''],
+    ['JANコード', jan ? `<span class="jan-copy"><span class="jan-code copyable" onclick="copyText('${esc(jan)}')" title="クリックでコピー">${jan}</span><button class="copy-btn" onclick="copyText('${esc(jan)}')">コピー</button></span>` : '（未登録）'],
     ['旧コード', p.code_old ? `<code>${p.code_old}</code>` : ''],
   ];
   document.getElementById('modal-body').innerHTML = rows.filter(r => r[1] !== '' && r[1] !== null && r[1] !== undefined)
