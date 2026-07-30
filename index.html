@@ -129,8 +129,8 @@
 <div id="page-products" class="page active">
   <div class="tbl-wrap hide-sp">
     <table>
-      <thead><tr><th>商品コード</th><th>商品名称</th><th>単位</th><th>原単価</th><th style="width:60px;"></th></tr></thead>
-      <tbody id="p-tbody"><tr><td colspan="5" class="no-data">読み込み中...</td></tr></tbody>
+      <thead><tr><th>商品コード</th><th>商品名称</th><th>単位</th><th>原単価</th><th>JANコード</th><th style="width:60px;"></th></tr></thead>
+      <tbody id="p-tbody"><tr><td colspan="6" class="no-data">読み込み中...</td></tr></tbody>
     </table>
   </div>
   <div class="cards" id="p-cards"></div>
@@ -257,6 +257,7 @@ function renderProducts() {
         <td class="copyable" title="クリックでコピー" onclick="copyText('${esc(p.name)}')">${p.name}</td>
         <td style="color:var(--text2);">${p.unit||''}</td>
         <td style="text-align:right;font-weight:600;">${priceVisible ? '¥'+(p.price||0).toLocaleString() : '———'}</td>
+        <td>${p.jan ? `<span class="copyable" title="クリックでコピー" onclick="copyText('${esc(p.jan)}')" style="font-family:'Courier New',monospace;font-size:12px;">${p.jan}</span>` : '<span style="color:var(--text2);font-size:11px;">未登録</span>'}</td>
         <td><button class="btn-detail" onclick="openProductDetail(${i})">詳細</button></td>
       </tr>`).join('');
   document.getElementById('p-cards').innerHTML = filteredProducts.length === 0
