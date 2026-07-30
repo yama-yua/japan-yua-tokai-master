@@ -1,5 +1,5 @@
 {
-  "updated": "2026/07/30 11:46",
+  "updated": "2026/07/30 15:00",
   "products": [
     {
       "code": "13010001",
@@ -1856,9 +1856,9 @@
       "name": "【メーカー直送】スフレ ホワイト",
       "kana": "KT584800 ﾚｼﾞﾛｰﾙ 100ｶﾝ/1CS",
       "unit": "CS",
-      "price": 6200.0,
+      "price": 6800.0,
       "supplier_name": "(株)コウナン",
-      "status": "販売中",
+      "status": "販売停止",
       "code_old": "1677",
       "jan": "",
       "reduced_tax": 0
@@ -1870,7 +1870,7 @@
       "name": "【メーカー直送】KT588005 レジロール80巻/1CS",
       "kana": "KT588005 ﾚｼﾞﾛｰﾙ 80ｶﾝ/1CS",
       "unit": "CS",
-      "price": 7200.0,
+      "price": 8000.0,
       "supplier_name": "(株)コウナン",
       "status": "販売中",
       "code_old": "1969",
