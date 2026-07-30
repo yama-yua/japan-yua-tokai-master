@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Japan-yua-tokai 商品マスタ（閲覧専用）</title>
+<title>yuaBASE【統合マスタ】閲覧専用</title>
 <style>
   :root{--accent:#16a34a;--bg:#f9fafb;--surface:#fff;--border:#e5e7eb;--text:#111827;--text2:#6b7280;}
   *{box-sizing:border-box;margin:0;padding:0;}
@@ -14,7 +14,6 @@
   header .updated{margin-left:auto;font-size:12px;opacity:.8;}
   .readonly-badge{background:#fef9c3;color:#854d0e;border:1px solid #fde047;border-radius:4px;padding:4px 12px;font-size:12px;margin:10px 20px;}
   .toolbar{padding:10px 20px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;background:var(--surface);border-bottom:1px solid var(--border);}
-  /* タブ＋ツールバー全体を1つのstickyブロックに（iOS Safariでも確実） */
   .sticky-header{position:sticky;top:0;z-index:10;background:var(--surface);}
   .search-box{padding:7px 12px;border:1px solid var(--border);border-radius:6px;font-size:13px;font-family:inherit;width:220px;}
   select{padding:7px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;font-family:inherit;background:#fff;}
@@ -25,7 +24,6 @@
   td{padding:9px 12px;border-bottom:1px solid var(--border);font-size:13px;}
   tr:last-child td{border-bottom:none;}
   tr:hover td{background:#f9fafb;}
-  /* カード（スマホ用） */
   .cards{padding:0 12px 20px;display:flex;flex-direction:column;gap:10px;}
   .card{background:var(--surface);border-radius:8px;padding:12px 14px;box-shadow:0 1px 3px rgba(0,0,0,.08);}
   .card-title{font-weight:600;font-size:14px;margin-bottom:6px;display:flex;align-items:center;justify-content:space-between;gap:6px;}
@@ -47,33 +45,46 @@
   .s-stop{background:#fef9c3;color:#854d0e;}
   .s-dead{background:#fee2e2;color:#991b1b;}
   .price-hidden{color:transparent;background:#e5e7eb;border-radius:3px;cursor:pointer;user-select:none;}
-  .price-hidden:hover::after{content:'タップで表示';}
   .price-show-btn{font-size:11px;padding:3px 8px;border:1px solid var(--border);border-radius:4px;background:#fff;cursor:pointer;color:var(--text2);white-space:nowrap;}
   #price-toggle-row{display:flex;align-items:center;gap:6px;padding:6px 20px;background:#fff8f0;border-bottom:1px solid #fed7aa;font-size:12px;color:#92400e;}
-
   .tabs{display:flex;gap:0;padding:0 20px;background:var(--surface);border-bottom:1px solid var(--border);}
   .tab{padding:12px 18px;font-size:13px;cursor:pointer;border-bottom:2px solid transparent;color:var(--text2);}
   .tab.active{border-bottom-color:var(--accent);color:var(--accent);font-weight:600;}
   .page{display:none;} .page.active{display:block;}
   .no-data{text-align:center;padding:40px;color:var(--text2);}
-  /* ツールバー切り替え用 */
   .tab-toolbar{display:none;} .tab-toolbar.active{display:block;}
+  /* 詳細ボタン */
+  .btn-detail{font-size:11px;padding:2px 8px;border:1px solid var(--border);border-radius:4px;background:#fff;cursor:pointer;color:var(--text2);white-space:nowrap;}
+  .btn-detail:hover{background:#f3f4f6;}
+  /* モーダル */
+  .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:1000;display:none;align-items:center;justify-content:center;}
+  .modal-overlay.open{display:flex;}
+  .modal-box{background:#fff;border-radius:10px;padding:24px;max-width:520px;width:90%;max-height:85vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,.18);}
+  .modal-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:16px;}
+  .modal-title{font-size:16px;font-weight:700;line-height:1.4;}
+  .modal-close{background:none;border:none;font-size:20px;cursor:pointer;color:var(--text2);padding:0 4px;line-height:1;}
+  .modal-close:hover{color:var(--text);}
+  .modal-row{display:flex;gap:8px;padding:7px 0;border-bottom:1px solid var(--border);font-size:13px;align-items:flex-start;}
+  .modal-row:last-child{border-bottom:none;}
+  .modal-label{font-weight:600;color:var(--text2);min-width:90px;font-size:12px;padding-top:1px;}
+  .modal-val{flex:1;word-break:break-all;}
+  .jan-copy{display:inline-flex;align-items:center;gap:6px;}
+  .jan-code{font-family:'Courier New',monospace;font-size:13px;background:#f3f4f6;padding:2px 8px;border-radius:4px;}
 </style>
 </head>
 <body>
 <header>
-  <h1>Japan-yua-tokai 統合マスタ</h1>
+  <h1>yuaBASE【統合マスタ】</h1>
   <span class="badge">閲覧専用</span>
   <span class="updated" id="updated-at"></span>
 </header>
 <div class="readonly-badge">👁 このページは閲覧専用です。データの変更は社内ツール（localhost:8585）から行ってください。</div>
 
-<!-- タブ＋ツールバーを1つのstickyブロックにまとめる -->
 <div class="sticky-header">
   <div class="tabs">
     <div class="tab active" onclick="switchTab('products')">商品マスタ</div>
     <div class="tab" onclick="switchTab('customers')">取引先マスタ</div>
-    <div class="tab" onclick="switchTab('suppliers')">手配先マスタ</div>
+    <div class="tab" onclick="switchTab('suppliers')">仕入先マスタ</div>
   </div>
 
   <!-- 商品マスタ用ツールバー -->
@@ -105,27 +116,27 @@
     </div>
   </div>
 
-  <!-- 手配先マスタ用ツールバー -->
+  <!-- 仕入先マスタ用ツールバー -->
   <div id="st-suppliers" class="tab-toolbar">
     <div class="toolbar">
-      <input class="search-box" id="s-search" placeholder="手配先名・コードで検索..." oninput="renderSuppliers()">
+      <input class="search-box" id="s-search" placeholder="仕入先名・コードで検索..." oninput="renderSuppliers()">
       <span class="count" id="s-count"></span>
     </div>
   </div>
 </div>
 
-<!-- 商品マスタ（データのみ） -->
+<!-- 商品マスタ -->
 <div id="page-products" class="page active">
   <div class="tbl-wrap hide-sp">
     <table>
-      <thead><tr><th>商品コード</th><th>商品名称</th><th>フリガナ</th><th>手配先</th><th>単位</th><th>原単価</th><th>旧コード</th><th>状態</th></tr></thead>
-      <tbody id="p-tbody"><tr><td colspan="8" class="no-data">読み込み中...</td></tr></tbody>
+      <thead><tr><th>商品コード</th><th>商品名称</th><th>単位</th><th>原単価</th><th style="width:60px;"></th></tr></thead>
+      <tbody id="p-tbody"><tr><td colspan="5" class="no-data">読み込み中...</td></tr></tbody>
     </table>
   </div>
   <div class="cards" id="p-cards"></div>
 </div>
 
-<!-- 取引先マスタ（データのみ） -->
+<!-- 取引先マスタ -->
 <div id="page-customers" class="page">
   <div class="tbl-wrap hide-sp">
     <table>
@@ -136,20 +147,33 @@
   <div class="cards" id="c-cards"></div>
 </div>
 
-<!-- 手配先マスタ（データのみ） -->
+<!-- 仕入先マスタ -->
 <div id="page-suppliers" class="page">
   <div class="tbl-wrap">
     <table>
-      <thead><tr><th>手配先コード</th><th>手配先名称</th><th>フリガナ</th><th>電話番号</th></tr></thead>
-      <tbody id="s-tbody"><tr><td colspan="4" class="no-data">読み込み中...</td></tr></tbody>
+      <thead><tr><th>コード</th><th>仕入先名称</th><th>フリガナ</th><th>電話番号</th><th style="width:60px;"></th></tr></thead>
+      <tbody id="s-tbody"><tr><td colspan="5" class="no-data">読み込み中...</td></tr></tbody>
     </table>
   </div>
 </div>
 
 <div id="copy-toast">コピーしました</div>
 
+<!-- 詳細モーダル -->
+<div class="modal-overlay" id="detail-modal" onclick="closeDetail(event)">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title" id="modal-title"></div>
+      <button class="modal-close" onclick="closeDetailBtn()">✕</button>
+    </div>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
 <script>
 let allData = { products: [], customers: [], suppliers: [], updated: '' };
+let filteredProducts = [];
+let filteredSuppliers = [];
 
 function copyText(text) {
   navigator.clipboard.writeText(text).catch(() => {
@@ -212,49 +236,72 @@ function statusClass(s) {
   return s==='販売中'?'s-active':s==='販売停止'?'s-stop':'s-dead';
 }
 
+function esc(s) {
+  return (s||'').replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+}
+
 function renderProducts() {
   const q   = document.getElementById('p-search').value.toLowerCase();
   const st  = document.getElementById('p-status').value;
   const sup = document.getElementById('p-supplier').value;
-  const list = allData.products.filter(p =>
+  filteredProducts = allData.products.filter(p =>
     matchQuery(q, p.name, p.code, p.supplier_name, p.code_old, p.kana) &&
     (!st  || p.status === st) &&
     (!sup || p.supplier_name === sup)
   );
-  document.getElementById('p-count').textContent = `${list.length}件表示（全${allData.products.length}件）`;
-  const noP = '<tr><td colspan="8" class="no-data">該当なし</td></tr>';
-  document.getElementById('p-tbody').innerHTML = list.length === 0 ? noP
-    : list.map(p => `<tr>
-        <td><code class="copyable" title="クリックでコピー" onclick="copyText('${p.code.replace(/'/g,"\\'")}')">${p.code}</code></td>
-        <td class="copyable" title="クリックでコピー" onclick="copyText('${p.name.replace(/'/g,"\\'")}')">${p.name}</td>
-        <td style="color:var(--text2);font-size:12px;">${p.kana||''}</td>
-        <td>${p.supplier_name||''}</td>
+  document.getElementById('p-count').textContent = `${filteredProducts.length}件表示（全${allData.products.length}件）`;
+  const noP = '<tr><td colspan="5" class="no-data">該当なし</td></tr>';
+  document.getElementById('p-tbody').innerHTML = filteredProducts.length === 0 ? noP
+    : filteredProducts.map((p,i) => `<tr>
+        <td><code class="copyable" title="クリックでコピー" onclick="copyText('${esc(p.code)}')">${p.code}</code></td>
+        <td class="copyable" title="クリックでコピー" onclick="copyText('${esc(p.name)}')">${p.name}</td>
         <td style="color:var(--text2);">${p.unit||''}</td>
         <td style="text-align:right;font-weight:600;">${priceVisible ? '¥'+(p.price||0).toLocaleString() : '———'}</td>
-        <td><code style="font-size:11px;">${p.code_old||''}</code></td>
-        <td><span class="badge-s ${statusClass(p.status)}">${p.status}</span></td>
+        <td><button class="btn-detail" onclick="openProductDetail(${i})">詳細</button></td>
       </tr>`).join('');
-  document.getElementById('p-cards').innerHTML = list.length === 0
+  document.getElementById('p-cards').innerHTML = filteredProducts.length === 0
     ? '<div style="text-align:center;padding:40px;color:var(--text2);">該当なし</div>'
-    : list.map(p => {
-        const copyVal = (p.code + ' ' + p.name).replace(/'/g, "\\'");
+    : filteredProducts.map((p,i) => {
+        const copyVal = (p.code + ' ' + p.name).replace(/\\/g,'\\\\').replace(/'/g,"\\'");
         return `<div class="card">
         <div class="card-title">
           <div class="card-title-left">
-            <span class="card-code copyable" title="コードをコピー" onclick="copyText('${p.code.replace(/'/g,"\\'")}')">${p.code}</span>
+            <span class="card-code copyable" title="コードをコピー" onclick="copyText('${esc(p.code)}')">${p.code}</span>
             <span class="badge-s ${statusClass(p.status)}" style="font-size:11px;">${p.status}</span>
           </div>
           <button class="copy-btn" onclick="copyText('${copyVal}')">📋 コピー</button>
         </div>
-        <div class="copyable" title="商品名をコピー" style="font-size:14px;font-weight:600;margin:4px 0;" onclick="copyText('${p.name.replace(/'/g,"\\'")}')">${p.name}</div>
+        <div class="copyable" title="商品名をコピー" style="font-size:14px;font-weight:600;margin:4px 0;" onclick="copyText('${esc(p.name)}')">${p.name}</div>
         <div class="card-row">
           <span class="card-label">手配先</span>${p.supplier_name||''}
           <span class="card-label">単位</span>${p.unit||''}
           <span class="card-label">原単価</span>${priceVisible ? '¥'+(p.price||0).toLocaleString() : '———'}
         </div>
         ${p.code_old ? `<div class="card-row"><span class="card-label">旧コード</span><code>${p.code_old}</code></div>` : ''}
+        <div style="margin-top:8px;"><button class="btn-detail" onclick="openProductDetail(${i})">📋 詳細を見る</button></div>
       </div>`;
       }).join('');
+}
+
+function openProductDetail(idx) {
+  const p = filteredProducts[idx];
+  if (!p) return;
+  document.getElementById('modal-title').textContent = p.name;
+  const jan = p.jan || '';
+  const rows = [
+    ['商品コード', `<span class="copyable" onclick="copyText('${esc(p.code)}')" title="クリックでコピー"><code>${p.code}</code></span>`],
+    ['フリガナ', p.kana || ''],
+    ['手配先', p.supplier_name || ''],
+    ['単位', p.unit || ''],
+    ['原単価', priceVisible ? '¥' + (p.price||0).toLocaleString() : '（非表示）'],
+    ['状態', `<span class="badge-s ${statusClass(p.status)}">${p.status||''}</span>`],
+    ['消費税区分', p.reduced_tax ? '軽減税率（8%）' : '標準税率（10%）'],
+    ['JANコード', jan ? `<span class="jan-copy"><span class="jan-code copyable" onclick="copyText('${esc(jan)}')" title="クリックでコピー">${jan}</span><button class="copy-btn" onclick="copyText('${esc(jan)}')">コピー</button></span>` : ''],
+    ['旧コード', p.code_old ? `<code>${p.code_old}</code>` : ''],
+  ];
+  document.getElementById('modal-body').innerHTML = rows.filter(r => r[1] !== '' && r[1] !== null && r[1] !== undefined)
+    .map(r => `<div class="modal-row"><span class="modal-label">${r[0]}</span><span class="modal-val">${r[1]}</span></div>`).join('');
+  document.getElementById('detail-modal').classList.add('open');
 }
 
 function renderCustomers() {
@@ -269,12 +316,12 @@ function renderCustomers() {
   document.getElementById('c-tbody').innerHTML = list.length === 0 ? noC
     : list.map(c => `<tr>
         <td><code>${c.code||''}</code></td>
-        <td class="copyable" title="クリックでコピー" onclick="copyText('${(c.store||'').replace(/'/g,"\\'")}')">${c.store||''}</td>
+        <td class="copyable" title="クリックでコピー" onclick="copyText('${esc(c.store)}')">${c.store||''}</td>
         <td style="color:var(--text2);">${c.corp||''}</td>
         <td>${c.system||''}</td>
         <td style="color:var(--text2);">${c.person||''}</td>
-        <td class="copyable" title="クリックでコピー" onclick="copyText('${(c.tel||'').replace(/'/g,"\\'")}')" style="color:var(--text2);">${c.tel||''}</td>
-        <td class="copyable" title="クリックでコピー" onclick="copyText('${(c.address||'').replace(/'/g,"\\'")}')" style="color:var(--text2);font-size:12px;">${c.address||''}</td>
+        <td class="copyable" title="クリックでコピー" onclick="copyText('${esc(c.tel)}')" style="color:var(--text2);">${c.tel||''}</td>
+        <td class="copyable" title="クリックでコピー" onclick="copyText('${esc(c.address)}')" style="color:var(--text2);font-size:12px;">${c.address||''}</td>
       </tr>`).join('');
   document.getElementById('c-cards').innerHTML = list.length === 0
     ? '<div style="text-align:center;padding:40px;color:var(--text2);">該当なし</div>'
@@ -283,28 +330,55 @@ function renderCustomers() {
           <span class="card-code">${c.code||''}</span>
           <span style="font-size:12px;color:var(--text2);">${c.system||''}</span>
         </div>
-        <div class="copyable" style="font-size:14px;font-weight:600;margin:4px 0;" title="店舗名をコピー" onclick="copyText('${(c.store||'').replace(/'/g,"\\'")}')">${c.store||''}</div>
+        <div class="copyable" style="font-size:14px;font-weight:600;margin:4px 0;" title="店舗名をコピー" onclick="copyText('${esc(c.store)}')">${c.store||''}</div>
         <div class="card-row"><span class="card-label">法人名</span>${c.corp||''}</div>
         <div class="card-row"><span class="card-label">担当</span>${c.person||''}</div>
-        ${c.tel ? `<div class="card-row"><span class="card-label">TEL</span><a href="tel:${c.tel}" style="color:var(--accent);" class="copyable" onclick="event.preventDefault();copyText('${c.tel.replace(/'/g,"\\'")}')">${c.tel}</a></div>` : ''}
-        ${c.address ? `<div class="card-row copyable" title="住所をコピー" onclick="copyText('${(c.address||'').replace(/'/g,"\\'")}')"><span class="card-label">住所</span>${c.zip?'〒'+c.zip+'　':''}${c.address}</div>` : ''}
+        ${c.tel ? `<div class="card-row"><span class="card-label">TEL</span><a href="tel:${c.tel}" style="color:var(--accent);" class="copyable" onclick="event.preventDefault();copyText('${esc(c.tel)}')">${c.tel}</a></div>` : ''}
+        ${c.address ? `<div class="card-row copyable" title="住所をコピー" onclick="copyText('${esc(c.address)}')"><span class="card-label">住所</span>${c.zip?'〒'+c.zip+'　':''}${c.address}</div>` : ''}
       </div>`).join('');
 }
 
 function renderSuppliers() {
   const q = document.getElementById('s-search').value.toLowerCase();
-  const list = allData.suppliers.filter(s =>
-    !q || (s.name||'').toLowerCase().includes(q) || (s.code||'').includes(q)
+  filteredSuppliers = allData.suppliers.filter(s =>
+    !q || (s.name||'').toLowerCase().includes(q) || (s.code||'').includes(q) || (s.kana||'').toLowerCase().includes(q)
   );
-  document.getElementById('s-count').textContent = `${list.length}件表示（全${allData.suppliers.length}件）`;
-  document.getElementById('s-tbody').innerHTML = list.length === 0
-    ? '<tr><td colspan="4" class="no-data">該当なし</td></tr>'
-    : list.map(s => `<tr>
+  document.getElementById('s-count').textContent = `${filteredSuppliers.length}件表示（全${allData.suppliers.length}件）`;
+  document.getElementById('s-tbody').innerHTML = filteredSuppliers.length === 0
+    ? '<tr><td colspan="5" class="no-data">該当なし</td></tr>'
+    : filteredSuppliers.map((s,i) => `<tr>
         <td><code>${s.code||''}</code></td>
-        <td class="copyable" title="クリックでコピー" onclick="copyText('${(s.name||'').replace(/'/g,"\\'")}')">${s.name||''}</td>
+        <td class="copyable" title="クリックでコピー" onclick="copyText('${esc(s.name)}')">${s.name||''}</td>
         <td style="color:var(--text2);">${s.kana||''}</td>
-        <td class="copyable" title="クリックでコピー" onclick="copyText('${(s.tel||'').replace(/'/g,"\\'")}')" style="color:var(--text2);">${s.tel||''}</td>
+        <td class="copyable" title="クリックでコピー" onclick="copyText('${esc(s.tel)}')" style="color:var(--text2);">${s.tel||''}</td>
+        <td><button class="btn-detail" onclick="openSupplierDetail(${i})">詳細</button></td>
       </tr>`).join('');
+}
+
+function openSupplierDetail(idx) {
+  const s = filteredSuppliers[idx];
+  if (!s) return;
+  document.getElementById('modal-title').textContent = s.name || '';
+  const addr = [s.zip ? '〒' + s.zip : '', s.address].filter(Boolean).join('　');
+  const rows = [
+    ['コード', `<code>${s.code||''}</code>`],
+    ['フリガナ', s.kana || ''],
+    ['電話番号', s.tel ? `<span class="copyable" onclick="copyText('${esc(s.tel)}')" title="クリックでコピー">${s.tel}</span>` : ''],
+    ['FAX', s.fax ? `<span class="copyable" onclick="copyText('${esc(s.fax)}')" title="クリックでコピー">${s.fax}</span>` : ''],
+    ['住所', addr ? `<span class="copyable" onclick="copyText('${esc(addr)}')" title="クリックでコピー">${addr}</span>` : ''],
+    ['担当者', s.contact_name || ''],
+    ['担当者TEL', s.contact_tel ? `<span class="copyable" onclick="copyText('${esc(s.contact_tel)}')" title="クリックでコピー">${s.contact_tel}</span>` : ''],
+  ];
+  document.getElementById('modal-body').innerHTML = rows.filter(r => r[1] && r[1] !== '<code></code>')
+    .map(r => `<div class="modal-row"><span class="modal-label">${r[0]}</span><span class="modal-val">${r[1]}</span></div>`).join('');
+  document.getElementById('detail-modal').classList.add('open');
+}
+
+function closeDetail(e) {
+  if (e.target === document.getElementById('detail-modal')) closeDetailBtn();
+}
+function closeDetailBtn() {
+  document.getElementById('detail-modal').classList.remove('open');
 }
 </script>
 </body>
