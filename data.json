@@ -1,5 +1,5 @@
 {
-  "updated": "2026/08/03 15:00",
+  "updated": "2026/08/04 08:00",
   "products": [
     {
       "code": "13010001",
@@ -15814,7 +15814,7 @@
       "name": "【手配品】HD-2500 パワートーチ (トーチメイト用)",
       "kana": "",
       "unit": "",
-      "price": 10710.0,
+      "price": 3311.0,
       "supplier_name": "岸保産業(株)",
       "status": "販売中",
       "code_old": "1265",
@@ -25390,7 +25390,7 @@
       "name": "【手配品】5621 ゴキブリホイホイ 5セット入",
       "kana": "5621 ｺﾞｷﾌﾞﾘﾎｲﾎｲ 5ｾｯﾄｲﾘ",
       "unit": "個",
-      "price": 275.0,
+      "price": 375.0,
       "supplier_name": "(株)富美屋",
       "status": "販売中",
       "code_old": "2490",
@@ -26752,6 +26752,62 @@
       "supplier_name": "岸保産業(株)",
       "status": "販売中",
       "code_old": "91056662",
+      "jan": "",
+      "reduced_tax": 0
+    },
+    {
+      "code": "13050461",
+      "dept_code": "1",
+      "supplier_code": "305",
+      "name": "竹角箸24cm 白帯巻 100膳",
+      "kana": "ﾀｹｶｸﾊｼｼﾛｵﾋﾞﾏｷｾﾞﾝ",
+      "unit": "袋",
+      "price": 380.0,
+      "supplier_name": "(株)尚美堂",
+      "status": "販売中",
+      "code_old": "",
+      "jan": "",
+      "reduced_tax": 0
+    },
+    {
+      "code": "13050462",
+      "dept_code": "1",
+      "supplier_code": "305",
+      "name": "竹角箸24cm 白帯巻 3000膳/1CS",
+      "kana": "ﾀｹｶｸﾊｼｼﾛｵﾋﾞﾏｷｾﾞﾝ",
+      "unit": "CS",
+      "price": 11400.0,
+      "supplier_name": "(株)尚美堂",
+      "status": "販売中",
+      "code_old": "",
+      "jan": "",
+      "reduced_tax": 0
+    },
+    {
+      "code": "13050463",
+      "dept_code": "1",
+      "supplier_code": "305",
+      "name": "箸袋｢古都ノ彩｣ひ色 500枚",
+      "kana": "ﾊｼﾌﾞｸﾛ｢ｺﾄﾉｱﾔ｣ﾋｲﾛ 500ﾏｲ",
+      "unit": "袋",
+      "price": 550.0,
+      "supplier_name": "(株)尚美堂",
+      "status": "販売中",
+      "code_old": "",
+      "jan": "",
+      "reduced_tax": 0
+    },
+    {
+      "code": "13080416",
+      "dept_code": "1",
+      "supplier_code": "308",
+      "name": "FT-700PE グルメクロス 厚口 ホワイト70枚 8340379",
+      "kana": "ｸﾞﾙﾒｸﾛｽｱﾂｸﾞﾁﾎﾜｲﾄﾏｲ　",
+      "unit": "袋",
+      "price": 945.0,
+      "supplier_name": "(株)スズカ未来",
+      "status": "販売中",
+      "code_old": "BZ8340379",
       "jan": "",
       "reduced_tax": 0
     }
