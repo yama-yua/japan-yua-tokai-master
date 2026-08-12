@@ -1,5 +1,5 @@
 {
-  "updated": "2026/08/12 08:00",
+  "updated": "2026/08/12 15:00",
   "products": [
     {
       "code": "13010001",
@@ -1422,7 +1422,7 @@
       "name": "569 ニトリルトライ3 PF ブラック L 100枚",
       "kana": "569 ﾆﾄﾘﾙﾄﾗｲ3 PF ﾌﾞﾗｯｸ L 100ﾏｲ",
       "unit": "箱",
-      "price": 640.0,
+      "price": 540.0,
       "supplier_name": "(株)エブノ",
       "status": "販売中",
       "code_old": "3428",
@@ -1436,7 +1436,7 @@
       "name": "569 ニトリルトライ3 PF ブラック LL 100枚",
       "kana": "569 ﾆﾄﾘﾙﾄﾗｲ3 PF ﾌﾞﾗｯｸ LL 100ﾏｲ",
       "unit": "箱",
-      "price": 640.0,
+      "price": 540.0,
       "supplier_name": "(株)エブノ",
       "status": "販売中",
       "code_old": "569LL",
@@ -1450,7 +1450,7 @@
       "name": "569 ニトリルトライ3 PF ブラック M 100枚",
       "kana": "569 ﾆﾄﾘﾙﾄﾗｲ3 PF ﾌﾞﾗｯｸ M 100ﾏｲ",
       "unit": "箱",
-      "price": 640.0,
+      "price": 540.0,
       "supplier_name": "(株)エブノ",
       "status": "販売中",
       "code_old": "3427",
@@ -1464,7 +1464,7 @@
       "name": "569 ニトリルトライ3 PF ブラック S 100枚",
       "kana": "569 ﾆﾄﾘﾙﾄﾗｲ3 PF ﾌﾞﾗｯｸ S 100ﾏｲ",
       "unit": "箱",
-      "price": 640.0,
+      "price": 540.0,
       "supplier_name": "(株)エブノ",
       "status": "販売中",
       "code_old": "3426",
@@ -1884,7 +1884,7 @@
       "name": "【メーカー直送】KT801010 レジロール (80幅x100m 1インチ) 20巻/1ロット",
       "kana": "KT801010 ﾚｼﾞﾛｰﾙ 20ｶﾝ (80ﾊﾊﾞx100m 1ｲﾝﾁ)",
       "unit": "箱",
-      "price": 3800.0,
+      "price": 4120.0,
       "supplier_name": "(株)コウナン",
       "status": "販売中",
       "code_old": "1122",
@@ -1898,7 +1898,7 @@
       "name": "【メーカー直送】KT801010 感熱ロールペーパー80mm幅x100m サーマル 40巻/1CS",
       "kana": "KT801010 ﾚｼﾞﾛｰﾙ 40ｶﾝ/1CS",
       "unit": "CS",
-      "price": 7600.0,
+      "price": 8240.0,
       "supplier_name": "(株)コウナン",
       "status": "販売中",
       "code_old": "1112",
@@ -1912,7 +1912,7 @@
       "name": "【メーカー直送】KT808051 レジサーマルロール50巻/1CS",
       "kana": "KT808051 ﾚｼﾞﾛｰﾙ 50ｶﾝ/1CS",
       "unit": "CS",
-      "price": 6800.0,
+      "price": 7350.0,
       "supplier_name": "(株)コウナン",
       "status": "販売中",
       "code_old": "1281",
@@ -1940,7 +1940,7 @@
       "name": "KT801010 感熱ロールペーパー80mm幅x100m サーマル",
       "kana": "KT801010 ｶﾝﾈﾂﾛｰﾙﾍﾟｰﾊﾟｰ 80mmﾊﾊﾞx100m ｻｰﾏﾙ",
       "unit": "個",
-      "price": 190.0,
+      "price": 206.0,
       "supplier_name": "(株)コウナン",
       "status": "販売中",
       "code_old": "KT801010",
@@ -1982,7 +1982,7 @@
       "name": "レジサーマル RS584008 20巻/1箱(58*40*8)",
       "kana": "ﾚｼﾞｻｰﾏﾙ RS584008 20ｶﾝ/1ﾊｺ(58*40*8)",
       "unit": "箱",
-      "price": 1220.0,
+      "price": 1320.0,
       "supplier_name": "(株)コウナン",
       "status": "販売中",
       "code_old": "2232",
@@ -1996,7 +1996,7 @@
       "name": "レジサーマル50巻/1箱(80*80*12) KT808051",
       "kana": "ﾚｼﾞｻｰﾏﾙ 50ｶﾝ/1ﾊｺ(80*80*12) KT808051",
       "unit": "CS",
-      "price": 6800.0,
+      "price": 7350.0,
       "supplier_name": "(株)コウナン",
       "status": "販売中",
       "code_old": "592",
@@ -3414,7 +3414,7 @@
       "supplier_name": "(株)シモジマ",
       "status": "販売中",
       "code_old": "#006729000",
-      "jan": "4901755440850",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -4926,7 +4926,7 @@
       "supplier_name": "(株)シモジマ",
       "status": "販売中",
       "code_old": "#004463926-1",
-      "jan": "4945965924304",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -7950,7 +7950,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "2786",
-      "jan": "4935168114688",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -7964,7 +7964,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "3553",
-      "jan": "4935168368746",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -8020,7 +8020,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "3111",
-      "jan": "4935168129132",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -8034,7 +8034,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "3110",
-      "jan": "4935168129101",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -8146,7 +8146,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "3865",
-      "jan": "4935168139230",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -8216,7 +8216,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "2641985",
-      "jan": "465",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -8524,7 +8524,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "E30841",
-      "jan": "4945965030845",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -8552,7 +8552,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "1956",
-      "jan": "4945965033686",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -8566,7 +8566,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "3668",
-      "jan": "4945965033686",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -8580,7 +8580,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "1955",
-      "jan": "4945965138091",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -8622,7 +8622,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "4108",
-      "jan": "4945965138091",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -8678,7 +8678,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "1335",
-      "jan": "4935168308858",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -8692,7 +8692,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "W018330",
-      "jan": "4935168308858",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -8748,7 +8748,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "2613",
-      "jan": "4549379447055",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -8790,7 +8790,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "F044936-1",
-      "jan": "4549379676936",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -8832,7 +8832,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "F044934",
-      "jan": "4549379676899",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -8846,7 +8846,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "F044934-1",
-      "jan": "4549379676899",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -8860,7 +8860,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "4074",
-      "jan": "4549379570395",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -8930,7 +8930,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "1556",
-      "jan": "4549379024034",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -9308,7 +9308,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "2319",
-      "jan": "4560140354181",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -9336,7 +9336,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "3341",
-      "jan": "4549379153499",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -9420,7 +9420,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "2579",
-      "jan": "4940221113232",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -9518,7 +9518,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "1967",
-      "jan": "4549379289891",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -9588,7 +9588,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "BMM-SD20-10-3W",
-      "jan": "4945965925103",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -9658,7 +9658,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "N010452",
-      "jan": "570",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -9714,7 +9714,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "F041664",
-      "jan": "4549379447055",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -9812,7 +9812,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "F027198",
-      "jan": "4549379153253",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -9826,7 +9826,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "#004468609",
-      "jan": "4549379153253",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -9836,7 +9836,7 @@
       "name": "UACJアルミホイル 30cm×50m 3933713",
       "kana": "UACｱﾙﾐﾎｲﾙ 30cm×50m 3933713",
       "unit": "本",
-      "price": 445.0,
+      "price": 526.0,
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "4168",
@@ -9868,7 +9868,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "1229",
-      "jan": "4935168285692",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -9976,7 +9976,7 @@
       "name": "アルミホイル(30*50) 3930790",
       "kana": "ｱﾙﾐﾎｲﾙ(30×50) 3930790",
       "unit": "本",
-      "price": 469.0,
+      "price": 548.0,
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "334",
@@ -10064,7 +10064,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "3910",
-      "jan": "10100",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -10078,7 +10078,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "3907",
-      "jan": "9800",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -10092,7 +10092,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "3906",
-      "jan": "5000",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -10176,7 +10176,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "2830",
-      "jan": "4969641703373",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -10372,7 +10372,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "1346",
-      "jan": "4977017036062",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -10428,7 +10428,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "3021",
-      "jan": "4977017036055",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -10456,7 +10456,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "2624",
-      "jan": "4977017036109",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -10568,7 +10568,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "3203",
-      "jan": "4902465809203",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -10582,7 +10582,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "3954",
-      "jan": "4547691681171",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -10634,7 +10634,7 @@
       "name": "フェルミ キッチンタオル 100カット×4R 5270269",
       "kana": "ﾌｪﾙﾐ ｷｯﾁﾝﾀｵﾙ 100ｶｯﾄ×4R 5270269",
       "unit": "袋",
-      "price": 435.0,
+      "price": 463.0,
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "1887",
@@ -10806,7 +10806,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "1141028",
-      "jan": "8400",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -10918,7 +10918,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "2496",
-      "jan": "4580319658063",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -11142,7 +11142,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "D66023",
-      "jan": "4995297660234",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -11156,7 +11156,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "E164608",
-      "jan": "4945965164601",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -11170,7 +11170,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "Y010156",
-      "jan": "4529671033149",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -11212,7 +11212,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "5830095",
-      "jan": "16560",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -11254,7 +11254,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "H09T001",
-      "jan": "4946944444653",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -11450,7 +11450,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "W018332",
-      "jan": "4935168308902",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -11548,7 +11548,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "1141092",
-      "jan": "16020",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -11754,7 +11754,7 @@
       "name": "【メーカー直送】4折 紙ナプキン未晒 1CS10000枚 (1袋125枚x80袋) 5270048",
       "kana": "4ｵﾘ ｼﾝﾅﾁｭｷﾝﾎﾝﾀｲ 1CS10000ﾏｲ (1ﾌｸﾛ125ﾏｲ×80ﾌｸﾛ) 5270048",
       "unit": "CS",
-      "price": 4900.0,
+      "price": 5500.0,
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "742237-2",
@@ -11884,7 +11884,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "2875",
-      "jan": "29350",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -12150,7 +12150,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "P002640",
-      "jan": "4940221172932",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -12206,7 +12206,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "5909019",
-      "jan": "4560224468087",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -12402,7 +12402,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "D43853-1",
-      "jan": "4995297438536",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -12528,7 +12528,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "4088",
-      "jan": "4560224467257",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -12626,7 +12626,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "2797",
-      "jan": "4560224467349",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -12696,7 +12696,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "3703",
-      "jan": "4526638619095",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -12724,7 +12724,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "5900888",
-      "jan": "4560224467745",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -12738,7 +12738,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "2000",
-      "jan": "4560224467257",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -12920,7 +12920,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "2495",
-      "jan": "4580319659138",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -12948,7 +12948,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "1610",
-      "jan": "4902465800361",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -13102,7 +13102,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "5300119",
-      "jan": "17400",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -13144,7 +13144,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "2640860",
-      "jan": "5610",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -13578,7 +13578,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "Y002043-1",
-      "jan": "4549379305539",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -13592,7 +13592,7 @@
       "supplier_name": "(株)スズカ未来",
       "status": "販売中",
       "code_old": "Y014688-1",
-      "jan": "4526638668956",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -13844,7 +13844,7 @@
       "supplier_name": "(株)ニチネン",
       "status": "販売中",
       "code_old": "4153",
-      "jan": "6400",
+      "jan": "4944405022129",
       "reduced_tax": 0
     },
     {
@@ -13858,7 +13858,7 @@
       "supplier_name": "(株)ニチネン",
       "status": "販売中",
       "code_old": "KC-338A",
-      "jan": "",
+      "jan": "4944405003210",
       "reduced_tax": 0
     },
     {
@@ -13872,7 +13872,7 @@
       "supplier_name": "(株)ニチネン",
       "status": "販売中",
       "code_old": "214",
-      "jan": "",
+      "jan": "4944405004033",
       "reduced_tax": 0
     },
     {
@@ -13886,7 +13886,7 @@
       "supplier_name": "(株)ニチネン",
       "status": "販売中",
       "code_old": "16",
-      "jan": "",
+      "jan": "14944405004047",
       "reduced_tax": 0
     },
     {
@@ -14246,7 +14246,7 @@
       "name": "【メーカー直送】JL15吊下規格袋 紐付NO15 003 1CS/2000枚",
       "kana": "JL15 ﾂﾘｻｹﾞｷｶｸﾌﾞｸﾛ ﾋﾓﾂｷ No15 003 1CS/2000ﾏｲ",
       "unit": "CS",
-      "price": 7800.0,
+      "price": 8300.0,
       "supplier_name": "ハウスホールドジャパン(株)",
       "status": "販売中",
       "code_old": "JL15",
@@ -15258,7 +15258,7 @@
       "supplier_name": "ヨドバシ",
       "status": "販売中",
       "code_old": "958",
-      "jan": "1072",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -16378,7 +16378,7 @@
       "supplier_name": "(株)兼光産業",
       "status": "販売中",
       "code_old": "586",
-      "jan": "1800",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -16392,7 +16392,7 @@
       "supplier_name": "(株)兼光産業",
       "status": "販売中",
       "code_old": "952",
-      "jan": "1224",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -16406,7 +16406,7 @@
       "supplier_name": "(株)兼光産業",
       "status": "販売中",
       "code_old": "2267",
-      "jan": "13480",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -16420,7 +16420,7 @@
       "supplier_name": "(株)兼光産業",
       "status": "販売中",
       "code_old": "949",
-      "jan": "1850",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -16434,7 +16434,7 @@
       "supplier_name": "(株)兼光産業",
       "status": "販売中",
       "code_old": "402",
-      "jan": "842",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -16448,7 +16448,7 @@
       "supplier_name": "(株)兼光産業",
       "status": "販売中",
       "code_old": "1220",
-      "jan": "285",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -16462,7 +16462,7 @@
       "supplier_name": "(株)兼光産業",
       "status": "販売中",
       "code_old": "314",
-      "jan": "329",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -16476,7 +16476,7 @@
       "supplier_name": "(株)兼光産業",
       "status": "販売中",
       "code_old": "860",
-      "jan": "1800",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -16490,7 +16490,7 @@
       "supplier_name": "(株)兼光産業",
       "status": "販売中",
       "code_old": "594",
-      "jan": "1103",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -16504,7 +16504,7 @@
       "supplier_name": "(株)兼光産業",
       "status": "販売中",
       "code_old": "258",
-      "jan": "1800",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -16518,7 +16518,7 @@
       "supplier_name": "(株)兼光産業",
       "status": "販売中",
       "code_old": "879",
-      "jan": "1215",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -16532,7 +16532,7 @@
       "supplier_name": "(株)兼光産業",
       "status": "販売中",
       "code_old": "298",
-      "jan": "1125",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -16546,7 +16546,7 @@
       "supplier_name": "(株)兼光産業",
       "status": "販売中",
       "code_old": "4161",
-      "jan": "342",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -16560,7 +16560,7 @@
       "supplier_name": "(株)兼光産業",
       "status": "販売中",
       "code_old": "691",
-      "jan": "864",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -16574,7 +16574,7 @@
       "supplier_name": "(株)兼光産業",
       "status": "販売中",
       "code_old": "585",
-      "jan": "2520",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -17022,7 +17022,7 @@
       "supplier_name": "(株)市藤商店",
       "status": "販売中",
       "code_old": "2239",
-      "jan": "480",
+      "jan": "4902727009839",
       "reduced_tax": 0
     },
     {
@@ -17036,7 +17036,7 @@
       "supplier_name": "(株)市藤商店",
       "status": "販売中",
       "code_old": "2872",
-      "jan": "",
+      "jan": "4901548603783",
       "reduced_tax": 0
     },
     {
@@ -17106,7 +17106,7 @@
       "supplier_name": "(株)市藤商店",
       "status": "販売中",
       "code_old": "1355",
-      "jan": "",
+      "jan": "4966097010024",
       "reduced_tax": 0
     },
     {
@@ -17120,7 +17120,7 @@
       "supplier_name": "(株)市藤商店",
       "status": "販売中",
       "code_old": "2818",
-      "jan": "500",
+      "jan": "4976187800107",
       "reduced_tax": 0
     },
     {
@@ -17134,7 +17134,7 @@
       "supplier_name": "(株)市藤商店",
       "status": "販売中",
       "code_old": "4976187899309",
-      "jan": "",
+      "jan": "4976187899309",
       "reduced_tax": 0
     },
     {
@@ -17162,7 +17162,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "4099",
-      "jan": "10699",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -17400,7 +17400,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "3784",
-      "jan": "900",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -17414,7 +17414,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "4014",
-      "jan": "1110",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -17736,7 +17736,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "2535",
-      "jan": "750",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -17806,7 +17806,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "3629",
-      "jan": "6000",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -17974,7 +17974,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "3488",
-      "jan": "500",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -18226,7 +18226,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "1224",
-      "jan": "3080",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -18296,7 +18296,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "1133",
-      "jan": "4550",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -18814,7 +18814,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "1293",
-      "jan": "1294",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -18828,7 +18828,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "1272",
-      "jan": "5176",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -18856,7 +18856,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "1525",
-      "jan": "1105",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -18870,7 +18870,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "1302",
-      "jan": "4420",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -18912,7 +18912,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "180",
-      "jan": "970",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -18926,7 +18926,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "1262",
-      "jan": "2910",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -18940,7 +18940,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "292",
-      "jan": "398",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -18968,7 +18968,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "293",
-      "jan": "1980",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -18982,7 +18982,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "2447",
-      "jan": "1980",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -19136,7 +19136,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "720",
-      "jan": "323",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -19178,7 +19178,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "3569",
-      "jan": "6820",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -19220,7 +19220,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "571",
-      "jan": "425",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -19248,7 +19248,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "2504",
-      "jan": "540",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -19262,7 +19262,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "2794",
-      "jan": "1100",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -19430,7 +19430,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "1057",
-      "jan": "1650",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -19472,7 +19472,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "722",
-      "jan": "1303",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -19570,7 +19570,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "4106",
-      "jan": "665",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -19584,7 +19584,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "1724",
-      "jan": "3644",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -19598,7 +19598,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "708",
-      "jan": "1456",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -19626,7 +19626,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "234",
-      "jan": "1105",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -19692,7 +19692,7 @@
       "name": "ニッパクホイル 30*50",
       "kana": "ﾆｯﾊﾟｸﾎｲﾙ 30×50",
       "unit": "本",
-      "price": 460.0,
+      "price": 730.0,
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "622",
@@ -19706,7 +19706,7 @@
       "name": "ニッパクホイル 45×30 1本",
       "kana": "ﾆｯﾊﾟｸﾎｲﾙ 45×30 1ﾎﾝ",
       "unit": "本",
-      "price": 590.0,
+      "price": 820.0,
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "2360",
@@ -19724,7 +19724,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "256",
-      "jan": "1280",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -19752,7 +19752,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "1299",
-      "jan": "657",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -19878,7 +19878,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "2215",
-      "jan": "702",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -19906,7 +19906,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "2214",
-      "jan": "591",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -19934,7 +19934,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "3870",
-      "jan": "813",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -19948,7 +19948,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "595",
-      "jan": "260",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -19990,7 +19990,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "1288",
-      "jan": "1375",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -20060,7 +20060,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "1179",
-      "jan": "3000",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -20396,7 +20396,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "240",
-      "jan": "342.5",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -20410,7 +20410,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "3365",
-      "jan": "255",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -20424,7 +20424,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "2272",
-      "jan": "335",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -20438,7 +20438,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "3166",
-      "jan": "6700",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -20452,7 +20452,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "2244",
-      "jan": "335",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -20466,7 +20466,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "2117",
-      "jan": "450",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -20494,7 +20494,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "4012",
-      "jan": "7800",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -20508,7 +20508,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "3366",
-      "jan": "305",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -20522,7 +20522,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "2084",
-      "jan": "380",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -20536,7 +20536,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "2249",
-      "jan": "360",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -20550,7 +20550,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "1637",
-      "jan": "395",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -20774,7 +20774,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "2263",
-      "jan": "395",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -20802,7 +20802,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "1267",
-      "jan": "1050",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -20816,7 +20816,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "664",
-      "jan": "760",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -20844,7 +20844,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "3536",
-      "jan": "6192",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -21152,7 +21152,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "643",
-      "jan": "1000",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -21166,7 +21166,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "3069",
-      "jan": "4000",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -21180,7 +21180,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "235",
-      "jan": "1535",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -21502,7 +21502,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "3029",
-      "jan": "1587",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -21516,7 +21516,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "1495",
-      "jan": "1937",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -21558,7 +21558,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "363",
-      "jan": "825",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -21572,7 +21572,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "363-1",
-      "jan": "3300",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -21614,7 +21614,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "44050",
-      "jan": "4500",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -21736,7 +21736,7 @@
       "name": "割リ箸 竹双生 21cm 白無地ハカマ入 100膳",
       "kana": "ﾜﾘﾊﾞｼ ﾀｹｿｳｾｲ 21cm ｼﾛﾑｼﾞﾊｶﾏｲﾘ 100ｾﾞﾝ",
       "unit": "袋",
-      "price": 228.0,
+      "price": 272.0,
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "242",
@@ -21750,7 +21750,7 @@
       "name": "割箸 竹双生8寸 21cm 白ハカマ入 3000膳",
       "kana": "ﾜﾘﾊﾞｼ ﾀｹｿｳｾｲ 8ｽﾝ 21cm ｼﾛﾊｶﾏｲﾘ 3000ｾﾞﾝ",
       "unit": "CS",
-      "price": 7950.0,
+      "price": 8160.0,
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "2515",
@@ -22244,7 +22244,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "50",
-      "jan": "390",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -22282,7 +22282,7 @@
       "name": "除菌トイレクリーナー 500ml",
       "kana": "ｼﾞｮｷﾝﾄｲﾚｸﾘｰﾅｰ 500ml",
       "unit": "個",
-      "price": 89.0,
+      "price": 95.0,
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "158",
@@ -22422,7 +22422,7 @@
       "name": "食器用洗剤 4L",
       "kana": "ｼｮｯｷﾖｳｾﾝｻﾞｲ 4L",
       "unit": "本",
-      "price": 580.0,
+      "price": 780.0,
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "99",
@@ -22688,7 +22688,7 @@
       "name": "竹箸天削 24cm 白無地ハカマ入 100膳",
       "kana": "ﾀｹﾊｼﾃﾝｿｷﾞ 24cm ｼﾛﾑｼﾞﾊｶﾏｲﾘ 100ｾﾞﾝ",
       "unit": "袋",
-      "price": 290.0,
+      "price": 305.0,
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "602",
@@ -23206,7 +23206,7 @@
       "name": "別注差込箸「うな東」天削21cm 2500膳",
       "kana": "ﾍﾞｯﾁｭｳ ｻｼｺﾐﾊﾞｼ「ｳﾅﾋｶﾞｼ」ﾃﾝｿｷﾞ21cm 2500ｾﾞﾝ",
       "unit": "CS",
-      "price": 8250.0,
+      "price": 8625.0,
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "BC013",
@@ -23392,7 +23392,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "236",
-      "jan": "320",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -23406,7 +23406,7 @@
       "supplier_name": "(株)尚美堂",
       "status": "販売中",
       "code_old": "283",
-      "jan": "320",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -23644,7 +23644,7 @@
       "supplier_name": "(株)藤本商会本店",
       "status": "販売中",
       "code_old": "4123",
-      "jan": "",
+      "jan": "4560164123985",
       "reduced_tax": 0
     },
     {
@@ -23658,7 +23658,7 @@
       "supplier_name": "(株)藤本商会本店",
       "status": "販売中",
       "code_old": "KG-02",
-      "jan": "",
+      "jan": "4560164123992",
       "reduced_tax": 0
     },
     {
@@ -23672,7 +23672,7 @@
       "supplier_name": "(株)藤本商会本店",
       "status": "販売中",
       "code_old": "KG-04",
-      "jan": "",
+      "jan": "4560164124012",
       "reduced_tax": 0
     },
     {
@@ -23700,7 +23700,7 @@
       "supplier_name": "(株)藤本商会本店",
       "status": "販売中",
       "code_old": "NH-11",
-      "jan": "",
+      "jan": "4560164126917",
       "reduced_tax": 0
     },
     {
@@ -23714,7 +23714,7 @@
       "supplier_name": "(株)藤本商会本店",
       "status": "販売中",
       "code_old": "4121",
-      "jan": "",
+      "jan": "4582166631664",
       "reduced_tax": 0
     },
     {
@@ -23742,7 +23742,7 @@
       "supplier_name": "(株)藤本商会本店",
       "status": "販売中",
       "code_old": "4902393746731",
-      "jan": "",
+      "jan": "4902393746731",
       "reduced_tax": 0
     },
     {
@@ -23756,7 +23756,7 @@
       "supplier_name": "(株)藤本商会本店",
       "status": "販売中",
       "code_old": "IJ51",
-      "jan": "6500",
+      "jan": "4521684215512",
       "reduced_tax": 0
     },
     {
@@ -23770,7 +23770,7 @@
       "supplier_name": "(株)藤本商会本店",
       "status": "販売中",
       "code_old": "IJ51-1",
-      "jan": "500",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -23784,7 +23784,7 @@
       "supplier_name": "(株)藤本商会本店",
       "status": "販売中",
       "code_old": "NH-15",
-      "jan": "",
+      "jan": "4560164126955",
       "reduced_tax": 0
     },
     {
@@ -23808,7 +23808,7 @@
       "name": "おしぼり 「リフレ未晒 平」 180×220mm 透明無地フィルム 1200枚",
       "kana": "ｵｼﾎﾞﾘ ﾘﾌﾚ ﾐｻﾗｼ ﾋﾗ 180×220mm 1200ﾏｲ",
       "unit": "CS",
-      "price": 3120.0,
+      "price": 3720.0,
       "supplier_name": "(株)藤本商会本店",
       "status": "販売中",
       "code_old": "4087",
@@ -23868,7 +23868,7 @@
       "supplier_name": "(株)藤本商会本店",
       "status": "販売中",
       "code_old": "FS0001",
-      "jan": "",
+      "jan": "4990798730127",
       "reduced_tax": 0
     },
     {
@@ -23882,7 +23882,7 @@
       "supplier_name": "(株)藤本商会本店",
       "status": "販売中",
       "code_old": "1375",
-      "jan": "",
+      "jan": "4544588511115",
       "reduced_tax": 0
     },
     {
@@ -23896,7 +23896,7 @@
       "supplier_name": "(株)藤本商会本店",
       "status": "販売中",
       "code_old": "4043",
-      "jan": "",
+      "jan": "4905841030017",
       "reduced_tax": 0
     },
     {
@@ -23910,7 +23910,7 @@
       "supplier_name": "(株)藤本商会本店",
       "status": "販売中",
       "code_old": "4054",
-      "jan": "",
+      "jan": "4514960560635",
       "reduced_tax": 0
     },
     {
@@ -23924,7 +23924,7 @@
       "supplier_name": "(株)藤本商会本店",
       "status": "販売中",
       "code_old": "0930011",
-      "jan": "",
+      "jan": "4571261583626",
       "reduced_tax": 0
     },
     {
@@ -23966,7 +23966,7 @@
       "supplier_name": "(株)藤本商会本店",
       "status": "販売中",
       "code_old": "00002",
-      "jan": "",
+      "jan": "4560164120212",
       "reduced_tax": 0
     },
     {
@@ -23980,7 +23980,7 @@
       "supplier_name": "(株)藤本商会本店",
       "status": "販売中",
       "code_old": "230",
-      "jan": "",
+      "jan": "4962654400475",
       "reduced_tax": 0
     },
     {
@@ -24092,7 +24092,7 @@
       "supplier_name": "(株)藤本商会本店",
       "status": "販売中",
       "code_old": "7092096",
-      "jan": "",
+      "jan": "4560164124074",
       "reduced_tax": 0
     },
     {
@@ -24183,7 +24183,7 @@
       "code": "16040050",
       "dept_code": "1",
       "supplier_code": "",
-      "name": "【メーカー直送】名入箸袋｢食堂あおい｣20000枚",
+      "name": "【メーカー直送】名入箸袋「食堂あおい」20000枚",
       "kana": "ｼｮｸﾄﾞｳｱｵｲ",
       "unit": "ケース",
       "price": 53000.0,
@@ -25814,7 +25814,7 @@
       "supplier_name": "(株)富美屋",
       "status": "販売中",
       "code_old": "14",
-      "jan": "194",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -25828,7 +25828,7 @@
       "supplier_name": "(株)富美屋",
       "status": "販売中",
       "code_old": "993",
-      "jan": "5400",
+      "jan": "",
       "reduced_tax": 0
     },
     {
@@ -25898,7 +25898,7 @@
       "supplier_name": "(株)富美屋",
       "status": "販売中",
       "code_old": "118",
-      "jan": "195",
+      "jan": "",
       "reduced_tax": 0
     },
     {
