@@ -312,7 +312,7 @@ function renderCustomers() {
   const q  = document.getElementById('c-search').value.toLowerCase();
   const sy = document.getElementById('c-system').value;
   const list = allData.customers.filter(c =>
-    matchQuery(q, c.store, c.code, c.corp, c.kana) &&
+    matchQuery(q, c.store, c.code, c.corp, c.kana, c.old_code) &&
     (!sy || c.system === sy)
   );
   document.getElementById('c-count').textContent = `${list.length}件表示（全${allData.customers.length}件）`;
@@ -339,6 +339,7 @@ function renderCustomers() {
         <div class="card-row"><span class="card-label">担当</span>${c.person||''}</div>
         ${c.tel ? `<div class="card-row"><span class="card-label">TEL</span><a href="tel:${c.tel}" style="color:var(--accent);" class="copyable" onclick="event.preventDefault();copyText('${esc(c.tel)}')">${c.tel}</a></div>` : ''}
         ${c.address ? `<div class="card-row copyable" title="住所をコピー" onclick="copyText('${esc(c.address)}')"><span class="card-label">住所</span>${c.zip?'〒'+c.zip+'　':''}${c.address}</div>` : ''}
+        ${c.old_code ? `<div class="card-row"><span class="card-label">旧コード</span><code>${c.old_code}</code></div>` : ''}
       </div>`).join('');
 }
 
