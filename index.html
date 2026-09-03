@@ -5,59 +5,55 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>yuaBASE【統合マスタ】閲覧専用</title>
 <style>
-  :root{--accent:#16a34a;--bg:#f9fafb;--surface:#fff;--border:#e5e7eb;--text:#111827;--text2:#6b7280;}
+  :root{--accent:#16a34a;--bg:#f0f2f5;--surface:#fff;--surface2:#f7f8fa;--border:#e5e7eb;--text:#111827;--text2:#6b7280;--radius:8px;}
   *{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:'Meiryo',sans-serif;background:var(--bg);color:var(--text);font-size:14px;height:100vh;overflow:hidden;display:flex;flex-direction:column;}
-  .page-content{flex:1;overflow-y:auto;}
+  body{font-family:'Meiryo',sans-serif;background:var(--bg);color:var(--text);font-size:14px;}
   header{background:var(--accent);color:#fff;padding:12px 20px;display:flex;align-items:center;gap:12px;}
   header h1{font-size:16px;font-weight:700;}
   header .badge{background:rgba(255,255,255,.2);border-radius:4px;padding:2px 8px;font-size:12px;}
   header .updated{margin-left:auto;font-size:12px;opacity:.8;}
   .readonly-badge{background:#fef9c3;color:#854d0e;border:1px solid #fde047;border-radius:4px;padding:4px 12px;font-size:12px;margin:10px 20px;}
-  .toolbar{padding:10px 20px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;background:var(--surface);border-bottom:1px solid var(--border);}
   .sticky-header{position:sticky;top:0;z-index:10;background:var(--surface);}
-  .search-box{padding:7px 12px;border:1px solid var(--border);border-radius:6px;font-size:13px;font-family:inherit;width:220px;}
-  select{padding:7px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;font-family:inherit;background:#fff;}
-  .count{font-size:12px;color:var(--text2);margin-left:auto;}
-  .tbl-wrap{overflow-x:auto;padding:0 20px 20px;}
+  .tabs{display:flex;gap:0;padding:0 20px;background:var(--surface);border-bottom:1px solid var(--border);}
+  .tab{padding:12px 18px;font-size:13px;cursor:pointer;border-bottom:2px solid transparent;color:var(--text2);background:none;border-top:none;border-left:none;border-right:none;font-family:inherit;}
+  .tab.active{border-bottom-color:var(--accent);color:var(--accent);font-weight:600;}
+  .page{display:none;} .page.active{display:block;}
+  .content{padding:20px;}
+  /* 検索エリア */
+  .search-area{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 18px;margin-bottom:10px;max-width:72%;margin-left:auto;margin-right:auto;}
+  .search-area-body{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:10px;}
+  .search-textarea{width:100%;padding:7px 12px;border:1px solid var(--border);border-radius:var(--radius);font-family:inherit;font-size:13px;background:var(--bg);resize:vertical;height:160px;line-height:1.5;box-sizing:border-box;}
+  .search-textarea:focus{outline:none;border-color:var(--accent);}
+  .search-filters{display:flex;flex-direction:column;gap:10px;align-items:stretch;}
+  .search-filters>div{display:flex;flex-direction:column;gap:4px;width:100%;}
+  .search-filters select{width:100%;box-sizing:border-box;padding:7px 10px;border:1px solid var(--border);border-radius:var(--radius);font-family:inherit;font-size:13px;background:var(--surface);}
+  /* ボタン */
+  .btn{padding:7px 14px;border:none;border-radius:var(--radius);font-family:inherit;font-size:13px;cursor:pointer;font-weight:600;}
+  .btn-primary{background:var(--accent);color:#fff;}
+  .btn-primary:hover{background:#15803d;}
+  .btn-ghost{background:var(--surface2);color:var(--text);border:1px solid var(--border);}
+  .btn-ghost:hover{background:var(--border);}
+  /* テーブル */
+  .tbl-wrap{overflow-x:auto;background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);}
+  table{width:100%;border-collapse:collapse;background:var(--surface);}
   thead th{position:sticky;top:0;z-index:2;background:#f3f4f6;box-shadow:0 1px 0 var(--border);}
-  table{width:100%;border-collapse:collapse;background:var(--surface);box-shadow:0 1px 3px rgba(0,0,0,.08);}
   th{background:#f3f4f6;padding:10px 12px;text-align:left;font-size:12px;color:var(--text2);border-bottom:1px solid var(--border);}
   td{padding:9px 12px;border-bottom:1px solid var(--border);font-size:13px;}
   tr:last-child td{border-bottom:none;}
   tr:hover td{background:#f9fafb;}
-  .cards{padding:0 12px 20px;display:flex;flex-direction:column;gap:10px;}
-  .card{background:var(--surface);border-radius:8px;padding:12px 14px;box-shadow:0 1px 3px rgba(0,0,0,.08);}
-  .card-title{font-weight:600;font-size:14px;margin-bottom:6px;display:flex;align-items:center;justify-content:space-between;gap:6px;}
-  .card-title-left{display:flex;align-items:center;gap:6px;flex-wrap:wrap;flex:1;}
-  .card-code{font-size:11px;background:#f3f4f6;padding:2px 6px;border-radius:3px;font-family:'Courier New',monospace;margin-right:6px;}
-  .card-row{display:flex;gap:6px;font-size:12px;color:var(--text2);margin-top:3px;flex-wrap:wrap;}
-  .card-label{font-weight:600;color:#374151;}
-  .copy-btn{background:none;border:1px solid var(--border);border-radius:4px;padding:2px 6px;font-size:11px;color:var(--text2);cursor:pointer;white-space:nowrap;flex-shrink:0;}
-  .copy-btn:active{background:#f3f4f6;}
+  .no-data{text-align:center;padding:40px;color:var(--text2);}
+  /* コピー */
   .copyable{cursor:pointer;border-radius:3px;transition:background .12s;}
   .copyable:hover{background:rgba(59,130,246,.10);}
   .copyable:active{background:rgba(59,130,246,.22);}
   #copy-toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1e2130;color:#fff;padding:8px 18px;border-radius:8px;font-size:13px;z-index:9999;display:none;pointer-events:none;}
-  @media(min-width:640px){.cards{display:none;}.tbl-wrap{display:block;}}
-  @media(max-width:639px){.hide-sp{display:none;}.cards{display:flex;}}
   code{font-size:11px;background:#f3f4f6;padding:2px 5px;border-radius:3px;font-family:'Courier New',monospace;}
   .badge-s{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;}
   .s-active{background:#dcfce7;color:#166534;}
   .s-stop{background:#fef9c3;color:#854d0e;}
   .s-dead{background:#fee2e2;color:#991b1b;}
-  .price-hidden{color:transparent;background:#e5e7eb;border-radius:3px;cursor:pointer;user-select:none;}
-  .price-show-btn{font-size:11px;padding:3px 8px;border:1px solid var(--border);border-radius:4px;background:#fff;cursor:pointer;color:var(--text2);white-space:nowrap;}
-  #price-toggle-row{display:flex;align-items:center;gap:6px;padding:6px 20px;background:#fff8f0;border-bottom:1px solid #fed7aa;font-size:12px;color:#92400e;}
-  .tabs{display:flex;gap:0;padding:0 20px;background:var(--surface);border-bottom:1px solid var(--border);}
-  .tab{padding:12px 18px;font-size:13px;cursor:pointer;border-bottom:2px solid transparent;color:var(--text2);}
-  .tab.active{border-bottom-color:var(--accent);color:var(--accent);font-weight:600;}
-  .page{display:none;} .page.active{display:block;}
-  .no-data{text-align:center;padding:40px;color:var(--text2);}
-  .tab-toolbar{display:none;} .tab-toolbar.active{display:block;}
-  /* 詳細ボタン */
-  .btn-detail{font-size:11px;padding:2px 8px;border:1px solid var(--border);border-radius:4px;background:#fff;cursor:pointer;color:var(--text2);white-space:nowrap;}
-  .btn-detail:hover{background:#f3f4f6;}
+  #price-toggle-row{display:flex;align-items:center;gap:6px;padding:6px 0;font-size:12px;color:#92400e;margin-bottom:8px;}
+  .price-show-btn{font-size:11px;padding:3px 8px;border:1px solid var(--border);border-radius:4px;background:#fff;cursor:pointer;color:var(--text2);}
   /* モーダル */
   .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:1000;display:none;align-items:center;justify-content:center;}
   .modal-overlay.open{display:flex;}
@@ -70,95 +66,216 @@
   .modal-row:last-child{border-bottom:none;}
   .modal-label{font-weight:600;color:var(--text2);min-width:90px;font-size:12px;padding-top:1px;}
   .modal-val{flex:1;word-break:break-all;}
-  .jan-copy{display:inline-flex;align-items:center;gap:6px;}
-  .jan-code{font-family:'Courier New',monospace;font-size:13px;background:#f3f4f6;padding:2px 8px;border-radius:4px;}
+  /* 詳細ボタン */
+  .btn-detail{font-size:11px;padding:2px 8px;border:1px solid var(--border);border-radius:4px;background:#fff;cursor:pointer;color:var(--text2);white-space:nowrap;}
+  .btn-detail:hover{background:#f3f4f6;}
+  /* カード（SP） */
+  .cards{padding:0 0 20px;display:flex;flex-direction:column;gap:10px;}
+  .card{background:var(--surface);border-radius:8px;padding:12px 14px;box-shadow:0 1px 3px rgba(0,0,0,.08);}
+  .card-title{font-weight:600;font-size:14px;margin-bottom:6px;display:flex;align-items:center;justify-content:space-between;gap:6px;}
+  .card-title-left{display:flex;align-items:center;gap:6px;flex-wrap:wrap;flex:1;}
+  .card-code{font-size:11px;background:#f3f4f6;padding:2px 6px;border-radius:3px;font-family:'Courier New',monospace;margin-right:6px;}
+  .card-row{display:flex;gap:6px;font-size:12px;color:var(--text2);margin-top:3px;flex-wrap:wrap;}
+  .card-label{font-weight:600;color:#374151;}
+  .copy-btn{background:none;border:1px solid var(--border);border-radius:4px;padding:2px 6px;font-size:11px;color:var(--text2);cursor:pointer;white-space:nowrap;flex-shrink:0;}
+  .copy-btn:active{background:#f3f4f6;}
+  @media(min-width:640px){.cards{display:none;}.tbl-wrap{display:block;}}
+  @media(max-width:639px){.hide-sp{display:none;}.cards{display:flex;}.search-area{max-width:100%;}.search-area-body{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
+<div class="sticky-header">
 <header>
   <h1>yuaBASE【統合マスタ】</h1>
   <span class="badge">閲覧専用</span>
   <span class="updated" id="updated-at"></span>
 </header>
-<div class="sticky-header">
-  <div class="readonly-badge">👁 このページは閲覧専用です。データの変更は社内ツール（localhost:8585）から行ってください。</div>
-  <div class="tabs">
-    <div class="tab active" onclick="switchTab('products')">商品マスタ</div>
-    <div class="tab" onclick="switchTab('customers')">取引先マスタ</div>
-    <div class="tab" onclick="switchTab('suppliers')">仕入先マスタ</div>
-  </div>
-
-  <!-- 商品マスタ用ツールバー -->
-  <div id="st-products" class="tab-toolbar active">
-    <div class="toolbar">
-      <input class="search-box" id="p-search" placeholder="商品名・コード・手配先で検索..." oninput="renderProducts()">
-      <select id="p-status" onchange="renderProducts()">
-        <option value="">すべての状態</option>
-        <option>販売中</option><option>販売停止</option><option>廃番</option>
-      </select>
-      <select id="p-supplier" onchange="renderProducts()"><option value="">すべての手配先</option></select>
-      <span class="count" id="p-count"></span>
-    </div>
-    <div id="price-toggle-row" style="display:flex;align-items:center;gap:8px;padding:6px 20px;background:#fff8f0;border-bottom:1px solid #fed7aa;font-size:12px;color:#92400e;">
-      🔒 原単価は非表示です
-      <button onclick="togglePrice()" id="price-btn" style="font-size:11px;padding:3px 10px;border:1px solid #f97316;border-radius:4px;background:#fff;cursor:pointer;color:#c2410c;">表示する</button>
-    </div>
-  </div>
-
-  <!-- 取引先マスタ用ツールバー -->
-  <div id="st-customers" class="tab-toolbar">
-    <div class="toolbar">
-      <input class="search-box" id="c-search" placeholder="店舗名・コードで検索..." oninput="renderCustomers()">
-      <select id="c-system" onchange="renderCustomers()">
-        <option value="">すべての区分</option>
-        <option>タノム</option><option>その他</option><option>インフォマート</option><option>アスピット</option>
-      </select>
-      <span class="count" id="c-count"></span>
-    </div>
-  </div>
-
-  <!-- 仕入先マスタ用ツールバー -->
-  <div id="st-suppliers" class="tab-toolbar">
-    <div class="toolbar">
-      <input class="search-box" id="s-search" placeholder="仕入先名・コードで検索..." oninput="renderSuppliers()">
-      <span class="count" id="s-count"></span>
-    </div>
-  </div>
+<div class="readonly-badge">👁 このページは閲覧専用です。データの変更は社内ツール（localhost:8585）から行ってください。</div>
+<div class="tabs">
+  <button class="tab active" onclick="switchTab('products')">商品マスタ</button>
+  <button class="tab" onclick="switchTab('customers')">取引先マスタ</button>
+  <button class="tab" onclick="switchTab('suppliers')">仕入先マスタ</button>
+</div>
 </div>
 
-<div class="page-content">
+<div class="content">
+
 <!-- 商品マスタ -->
 <div id="page-products" class="page active">
+  <div class="search-area">
+    <div class="search-area-body">
+      <div>
+        <div style="font-size:11px;color:var(--text2);margin-bottom:4px;">キーワード（1行1ワード・OR検索）</div>
+        <textarea class="search-textarea" id="p-search" placeholder="商品名&#10;商品コード&#10;仕入先名など"></textarea>
+      </div>
+      <div class="search-filters">
+        <div>
+          <div style="font-size:11px;color:var(--text2);margin-bottom:4px;">部署</div>
+          <select id="p-dept">
+            <option value="">すべて</option>
+            <option value="1">小売</option>
+            <option value="2">産業</option>
+            <option value="3">パッケージ</option>
+          </select>
+        </div>
+        <div>
+          <div style="font-size:11px;color:var(--text2);margin-bottom:4px;">状態</div>
+          <select id="p-status">
+            <option value="">すべて</option>
+            <option value="販売中">販売中</option>
+            <option value="販売停止">販売停止</option>
+            <option value="廃番">廃番</option>
+          </select>
+        </div>
+        <div>
+          <div style="font-size:11px;color:var(--text2);margin-bottom:4px;">消費税区分</div>
+          <select id="p-tax">
+            <option value="">すべて</option>
+            <option value="1">軽減税率（8%）</option>
+            <option value="0">標準税率（10%）</option>
+          </select>
+        </div>
+        <div>
+          <div style="font-size:11px;color:var(--text2);margin-bottom:4px;">仕入先</div>
+          <select id="p-supplier"><option value="">すべて</option></select>
+        </div>
+        <div style="margin-top:auto;text-align:right;">
+          <button class="btn btn-ghost" style="font-size:12px;padding:4px 10px;" onclick="clearProductSearch()">✕ 検索クリア</button>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-primary" style="width:100%;" onclick="searchProducts()">検索</button>
+  </div>
+  <div id="price-toggle-row" style="background:#fff8f0;border-bottom:1px solid #fed7aa;padding:6px 12px;border-radius:6px;margin-bottom:8px;">
+    🔒 原単価は非表示です
+    <button onclick="togglePrice()" id="price-btn" style="font-size:11px;padding:3px 10px;border:1px solid #f97316;border-radius:4px;background:#fff;cursor:pointer;color:#c2410c;">表示する</button>
+  </div>
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;">
+    <div id="p-count-top" style="font-size:12px;color:var(--text2);"></div>
+    <div style="margin-left:auto;display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2);">
+      表示件数：<select id="p-pagesize-top" style="padding:3px 6px;border:1px solid var(--border);border-radius:4px;font-size:12px;background:var(--surface);" onchange="document.getElementById('p-pagesize').value=this.value;pPage=1;renderProducts()">
+        <option value="10">10件</option><option value="25">25件</option><option value="50" selected>50件</option><option value="100">100件</option>
+      </select>
+    </div>
+  </div>
   <div class="tbl-wrap hide-sp">
     <table>
-      <thead><tr><th>商品コード</th><th>商品名称</th><th>単位</th><th>原単価</th><th>JANコード</th><th style="width:60px;"></th></tr></thead>
-      <tbody id="p-tbody"><tr><td colspan="6" class="no-data">読み込み中...</td></tr></tbody>
+      <thead><tr><th>商品コード</th><th>商品名称</th><th>フリガナ</th><th>仕入先</th><th>単位</th><th>原単価</th><th>JANコード</th><th>状態</th><th style="width:60px;"></th></tr></thead>
+      <tbody id="p-tbody"><tr><td colspan="9" class="no-data">読み込み中...</td></tr></tbody>
     </table>
   </div>
   <div class="cards" id="p-cards"></div>
+  <div style="margin-top:8px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+    <div id="p-count" style="font-size:12px;color:var(--text2);"></div>
+    <div style="margin-left:auto;display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2);">
+      表示件数：<select id="p-pagesize" style="padding:3px 6px;border:1px solid var(--border);border-radius:4px;font-size:12px;background:var(--surface);" onchange="pPage=1;renderProducts()">
+        <option value="10">10件</option><option value="25">25件</option><option value="50" selected>50件</option><option value="100">100件</option>
+      </select>
+    </div>
+    <div id="p-pagination" style="display:flex;gap:4px;flex-wrap:wrap;"></div>
+  </div>
 </div>
 
 <!-- 取引先マスタ -->
 <div id="page-customers" class="page">
+  <div class="search-area">
+    <div class="search-area-body">
+      <div>
+        <div style="font-size:11px;color:var(--text2);margin-bottom:4px;">キーワード（1行1ワード・OR検索）</div>
+        <textarea class="search-textarea" id="c-search" placeholder="店舗名&#10;法人名&#10;コードなど"></textarea>
+      </div>
+      <div class="search-filters">
+        <div>
+          <div style="font-size:11px;color:var(--text2);margin-bottom:4px;">システム区分</div>
+          <select id="c-system">
+            <option value="">すべて</option>
+            <option>タノム</option><option>その他</option><option>インフォマート</option><option>アスピット</option>
+          </select>
+        </div>
+        <div>
+          <div style="font-size:11px;color:var(--text2);margin-bottom:4px;">配送方法</div>
+          <select id="c-delivery">
+            <option value="">すべて</option>
+            <option value="配達">配達</option>
+            <option value="配送">配送</option>
+            <option value="エコアース">エコアース</option>
+          </select>
+        </div>
+        <div style="margin-top:auto;text-align:right;">
+          <button class="btn btn-ghost" style="font-size:12px;padding:4px 10px;" onclick="clearCustomerSearch()">✕ 検索クリア</button>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-primary" style="width:100%;" onclick="searchCustomers()">検索</button>
+  </div>
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;">
+    <div id="c-count-top" style="font-size:12px;color:var(--text2);"></div>
+    <div style="margin-left:auto;display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2);">
+      表示件数：<select id="c-pagesize-top" style="padding:3px 6px;border:1px solid var(--border);border-radius:4px;font-size:12px;background:var(--surface);" onchange="document.getElementById('c-pagesize').value=this.value;cPage=1;renderCustomers()">
+        <option value="10">10件</option><option value="25">25件</option><option value="50" selected>50件</option><option value="100">100件</option>
+      </select>
+    </div>
+  </div>
   <div class="tbl-wrap hide-sp">
     <table>
-      <thead><tr><th>取引先コード</th><th>店舗名</th><th>法人名</th><th>システム区分</th><th>担当者</th><th>電話番号</th><th>住所</th></tr></thead>
-      <tbody id="c-tbody"><tr><td colspan="7" class="no-data">読み込み中...</td></tr></tbody>
+      <thead><tr><th>取引先コード</th><th>店舗名</th><th>法人名</th><th>システム区分</th><th>配送方法</th><th>担当者</th><th>電話番号</th><th>住所</th></tr></thead>
+      <tbody id="c-tbody"><tr><td colspan="8" class="no-data">読み込み中...</td></tr></tbody>
     </table>
   </div>
   <div class="cards" id="c-cards"></div>
+  <div style="margin-top:8px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+    <div id="c-count" style="font-size:12px;color:var(--text2);"></div>
+    <div style="margin-left:auto;display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2);">
+      表示件数：<select id="c-pagesize" style="padding:3px 6px;border:1px solid var(--border);border-radius:4px;font-size:12px;background:var(--surface);" onchange="cPage=1;renderCustomers()">
+        <option value="10">10件</option><option value="25">25件</option><option value="50" selected>50件</option><option value="100">100件</option>
+      </select>
+    </div>
+    <div id="c-pagination" style="display:flex;gap:4px;flex-wrap:wrap;"></div>
+  </div>
 </div>
 
 <!-- 仕入先マスタ -->
 <div id="page-suppliers" class="page">
+  <div class="search-area">
+    <div class="search-area-body">
+      <div>
+        <div style="font-size:11px;color:var(--text2);margin-bottom:4px;">キーワード（1行1ワード・OR検索）</div>
+        <textarea class="search-textarea" id="s-search" placeholder="仕入先名&#10;コードなど"></textarea>
+      </div>
+      <div class="search-filters">
+        <div style="margin-top:auto;text-align:right;">
+          <button class="btn btn-ghost" style="font-size:12px;padding:4px 10px;" onclick="clearSupplierSearch()">✕ 検索クリア</button>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-primary" style="width:100%;" onclick="searchSuppliers()">検索</button>
+  </div>
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;">
+    <div id="s-count-top" style="font-size:12px;color:var(--text2);"></div>
+    <div style="margin-left:auto;display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2);">
+      表示件数：<select id="s-pagesize-top" style="padding:3px 6px;border:1px solid var(--border);border-radius:4px;font-size:12px;background:var(--surface);" onchange="document.getElementById('s-pagesize').value=this.value;sPage=1;renderSuppliers()">
+        <option value="10">10件</option><option value="25">25件</option><option value="50" selected>50件</option><option value="100">100件</option>
+      </select>
+    </div>
+  </div>
   <div class="tbl-wrap">
     <table>
-      <thead><tr><th>コード</th><th>仕入先名称</th><th>フリガナ</th><th>電話番号</th><th style="width:60px;"></th></tr></thead>
+      <thead><tr><th>仕入先コード</th><th>仕入先名称</th><th>フリガナ</th><th>電話番号</th><th style="width:60px;"></th></tr></thead>
       <tbody id="s-tbody"><tr><td colspan="5" class="no-data">読み込み中...</td></tr></tbody>
     </table>
   </div>
+  <div style="margin-top:8px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+    <div id="s-count" style="font-size:12px;color:var(--text2);"></div>
+    <div style="margin-left:auto;display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2);">
+      表示件数：<select id="s-pagesize" style="padding:3px 6px;border:1px solid var(--border);border-radius:4px;font-size:12px;background:var(--surface);" onchange="sPage=1;renderSuppliers()">
+        <option value="10">10件</option><option value="25">25件</option><option value="50" selected>50件</option><option value="100">100件</option>
+      </select>
+    </div>
+    <div id="s-pagination" style="display:flex;gap:4px;flex-wrap:wrap;"></div>
+  </div>
 </div>
-</div><!-- /page-content -->
+
+</div><!-- /content -->
 
 <div id="copy-toast">コピーしました</div>
 
@@ -176,7 +293,10 @@
 <script>
 let allData = { products: [], customers: [], suppliers: [], updated: '' };
 let filteredProducts = [];
+let filteredCustomers = [];
 let filteredSuppliers = [];
+let pPage = 1, cPage = 1, sPage = 1;
+let priceVisible = false;
 
 function copyText(text) {
   navigator.clipboard.writeText(text).catch(() => {
@@ -192,9 +312,25 @@ function copyText(text) {
 
 function matchQuery(q, ...fields) {
   if (!q) return true;
-  const terms = q.trim().split(/\s+/).filter(Boolean);
   const text = fields.filter(Boolean).join(' ').toLowerCase();
-  return terms.every(t => text.includes(t));
+  return text.includes(q.trim().toLowerCase());
+}
+
+function renderPagination(containerId, currentPage, total, pageSize, onPageChange) {
+  const totalPages = Math.ceil(total / pageSize);
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  if (totalPages <= 1) { el.innerHTML = ''; return; }
+  let html = '';
+  const btn = (label, page, disabled, active) =>
+    `<button ${disabled?'':'onclick="'+onPageChange+'('+page+')"'} style="padding:3px 8px;font-size:12px;border:1px solid var(--border);border-radius:4px;background:${active?'var(--accent)':'var(--surface)'};color:${active?'#fff':'inherit'};cursor:${disabled?'default':'pointer'};opacity:${disabled?'0.4':'1'};" ${disabled?'disabled':''}>${label}</button>`;
+  html += btn('‹', currentPage-1, currentPage===1, false);
+  for (let i = 1; i <= totalPages; i++) {
+    if (i===1||i===totalPages||Math.abs(i-currentPage)<=2) html += btn(i, i, false, i===currentPage);
+    else if (Math.abs(i-currentPage)===3) html += '<span style="font-size:12px;padding:0 2px;">…</span>';
+  }
+  html += btn('›', currentPage+1, currentPage===totalPages, false);
+  el.innerHTML = html;
 }
 
 fetch('data.json?v=' + Date.now())
@@ -204,7 +340,7 @@ fetch('data.json?v=' + Date.now())
     document.getElementById('updated-at').textContent = 'データ更新日時: ' + d.updated;
     const names = [...new Set(d.products.map(p => p.supplier_name).filter(Boolean))].sort();
     const sel = document.getElementById('p-supplier');
-    sel.innerHTML = '<option value="">すべての手配先</option>' + names.map(n => `<option>${n}</option>`).join('');
+    sel.innerHTML = '<option value="">すべて</option>' + names.map(n => `<option>${n}</option>`).join('');
     renderProducts(); renderCustomers(); renderSuppliers();
   })
   .catch(() => {
@@ -218,18 +354,16 @@ function switchTab(name) {
   });
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById('page-' + name).classList.add('active');
-  document.querySelectorAll('.tab-toolbar').forEach(el => el.classList.remove('active'));
-  document.getElementById('st-' + name).classList.add('active');
 }
 
-let priceVisible = false;
 function togglePrice() {
   priceVisible = !priceVisible;
   document.getElementById('price-btn').textContent = priceVisible ? '隠す' : '表示する';
-  document.getElementById('price-toggle-row').style.background = priceVisible ? '#f0fdf4' : '#fff8f0';
-  document.getElementById('price-toggle-row').style.borderBottomColor = priceVisible ? '#86efac' : '#fed7aa';
-  document.getElementById('price-toggle-row').style.color = priceVisible ? '#166534' : '#92400e';
-  document.getElementById('price-toggle-row').firstChild.textContent = priceVisible ? '🔓 原単価を表示中' : '🔒 原単価は非表示です';
+  const row = document.getElementById('price-toggle-row');
+  row.style.background = priceVisible ? '#f0fdf4' : '#fff8f0';
+  row.style.borderColor = priceVisible ? '#86efac' : '#fed7aa';
+  row.style.color = priceVisible ? '#166534' : '#92400e';
+  row.firstChild.textContent = priceVisible ? '🔓 原単価を表示中' : '🔒 原単価は非表示です';
   document.getElementById('price-btn').style.borderColor = priceVisible ? '#16a34a' : '#f97316';
   document.getElementById('price-btn').style.color = priceVisible ? '#15803d' : '#c2410c';
   renderProducts();
@@ -243,29 +377,53 @@ function esc(s) {
   return (s||'').replace(/\\/g,'\\\\').replace(/'/g,"\\'");
 }
 
+// ── 商品マスタ ──────────────────────────────────────────
+function searchProducts() { pPage = 1; renderProducts(); }
+function clearProductSearch() {
+  document.getElementById('p-search').value = '';
+  document.getElementById('p-dept').value = '';
+  document.getElementById('p-status').value = '';
+  document.getElementById('p-tax').value = '';
+  document.getElementById('p-supplier').value = '';
+  pPage = 1; renderProducts();
+}
+function goToPPage(n) { pPage = n; renderProducts(); }
+
 function renderProducts() {
-  const q   = document.getElementById('p-search').value.toLowerCase();
-  const st  = document.getElementById('p-status').value;
-  const sup = document.getElementById('p-supplier').value;
+  const words  = document.getElementById('p-search').value.toLowerCase().split('\n').map(w=>w.trim()).filter(Boolean);
+  const dept   = document.getElementById('p-dept').value;
+  const status = document.getElementById('p-status').value;
+  const tax    = document.getElementById('p-tax').value;
+  const sup    = document.getElementById('p-supplier').value;
   filteredProducts = allData.products.filter(p =>
-    matchQuery(q, p.name, p.code, p.supplier_name, p.code_old, p.kana) &&
-    (!st  || p.status === st) &&
-    (!sup || p.supplier_name === sup)
+    (words.length === 0 || words.some(w => matchQuery(w, p.name, p.code, p.supplier_name, p.code_old, p.kana))) &&
+    (!dept   || String(p.dept_code) === dept) &&
+    (!status || p.status === status) &&
+    (tax === '' || String(p.reduced_tax || 0) === tax) &&
+    (!sup    || p.supplier_name === sup)
   );
-  document.getElementById('p-count').textContent = `${filteredProducts.length}件表示（全${allData.products.length}件）`;
-  const noP = '<tr><td colspan="5" class="no-data">該当なし</td></tr>';
-  document.getElementById('p-tbody').innerHTML = filteredProducts.length === 0 ? noP
-    : filteredProducts.map((p,i) => `<tr>
+  const pageSize = parseInt(document.getElementById('p-pagesize')?.value || 50);
+  const start = (pPage - 1) * pageSize;
+  const page = filteredProducts.slice(start, start + pageSize);
+  const countText = `${filteredProducts.length}件表示（全${allData.products.length}件）`;
+  document.getElementById('p-count').textContent = countText;
+  const pct = document.getElementById('p-count-top'); if(pct) pct.textContent = countText;
+  document.getElementById('p-tbody').innerHTML = page.length === 0
+    ? '<tr><td colspan="9" class="no-data">該当なし</td></tr>'
+    : page.map((p,i) => `<tr>
         <td><code class="copyable" title="クリックでコピー" onclick="copyText('${esc(p.code)}')">${p.code}</code></td>
         <td class="copyable" title="クリックでコピー" onclick="copyText('${esc(p.name)}')">${p.name}</td>
+        <td style="color:var(--text2);font-size:12px;">${p.kana||''}</td>
+        <td style="color:var(--text2);">${p.supplier_name||''}</td>
         <td style="color:var(--text2);">${p.unit||''}</td>
         <td style="text-align:right;font-weight:600;">${priceVisible ? '¥'+(p.price||0).toLocaleString() : '———'}</td>
         <td>${p.jan ? `<span class="copyable" title="クリックでコピー" onclick="copyText('${esc(p.jan)}')" style="font-family:'Courier New',monospace;font-size:12px;">${p.jan}</span>` : '<span style="color:var(--text2);font-size:11px;">未登録</span>'}</td>
-        <td><button class="btn-detail" onclick="openProductDetail(${i})">詳細</button></td>
+        <td><span class="badge-s ${statusClass(p.status)}">${p.status||''}</span></td>
+        <td><button class="btn-detail" onclick="openProductDetail(${start+i})">詳細</button></td>
       </tr>`).join('');
-  document.getElementById('p-cards').innerHTML = filteredProducts.length === 0
+  document.getElementById('p-cards').innerHTML = page.length === 0
     ? '<div style="text-align:center;padding:40px;color:var(--text2);">該当なし</div>'
-    : filteredProducts.map((p,i) => {
+    : page.map((p,i) => {
         const copyVal = (p.code + ' ' + p.name).replace(/\\/g,'\\\\').replace(/'/g,"\\'");
         return `<div class="card">
         <div class="card-title">
@@ -282,9 +440,10 @@ function renderProducts() {
           <span class="card-label">原単価</span>${priceVisible ? '¥'+(p.price||0).toLocaleString() : '———'}
         </div>
         ${p.code_old ? `<div class="card-row"><span class="card-label">旧コード</span><code>${p.code_old}</code></div>` : ''}
-        <div style="margin-top:8px;"><button class="btn-detail" onclick="openProductDetail(${i})">📋 詳細を見る</button></div>
+        <div style="margin-top:8px;"><button class="btn-detail" onclick="openProductDetail(${start+i})">📋 詳細を見る</button></div>
       </div>`;
       }).join('');
+  renderPagination('p-pagination', pPage, filteredProducts.length, pageSize, 'goToPPage');
 }
 
 function openProductDetail(idx) {
@@ -295,12 +454,12 @@ function openProductDetail(idx) {
   const rows = [
     ['商品コード', `<span class="copyable" onclick="copyText('${esc(p.code)}')" title="クリックでコピー"><code>${p.code}</code></span>`],
     ['フリガナ', p.kana || ''],
-    ['手配先', p.supplier_name || ''],
+    ['仕入先', p.supplier_name || ''],
     ['単位', p.unit || ''],
     ['原単価', priceVisible ? '¥' + (p.price||0).toLocaleString() : '（非表示）'],
     ['状態', `<span class="badge-s ${statusClass(p.status)}">${p.status||''}</span>`],
     ['消費税区分', p.reduced_tax ? '軽減税率（8%）' : '標準税率（10%）'],
-    ['JANコード', jan ? `<span class="jan-copy"><span class="jan-code copyable" onclick="copyText('${esc(jan)}')" title="クリックでコピー">${jan}</span><button class="copy-btn" onclick="copyText('${esc(jan)}')">コピー</button></span>` : '（未登録）'],
+    ['JANコード', jan ? `<span style="display:inline-flex;align-items:center;gap:6px;"><span class="copyable" onclick="copyText('${esc(jan)}')" title="クリックでコピー" style="font-family:'Courier New',monospace;font-size:13px;background:#f3f4f6;padding:2px 8px;border-radius:4px;">${jan}</span><button class="copy-btn" onclick="copyText('${esc(jan)}')">コピー</button></span>` : '（未登録）'],
     ['旧コード', p.code_old ? `<code>${p.code_old}</code>` : ''],
   ];
   document.getElementById('modal-body').innerHTML = rows.filter(r => r[1] !== '' && r[1] !== null && r[1] !== undefined)
@@ -308,56 +467,90 @@ function openProductDetail(idx) {
   document.getElementById('detail-modal').classList.add('open');
 }
 
+// ── 取引先マスタ ──────────────────────────────────────
+function searchCustomers() { cPage = 1; renderCustomers(); }
+function clearCustomerSearch() {
+  document.getElementById('c-search').value = '';
+  document.getElementById('c-system').value = '';
+  document.getElementById('c-delivery').value = '';
+  cPage = 1; renderCustomers();
+}
+function goToCPage(n) { cPage = n; renderCustomers(); }
+
 function renderCustomers() {
-  const q  = document.getElementById('c-search').value.toLowerCase();
-  const sy = document.getElementById('c-system').value;
-  const list = allData.customers.filter(c =>
-    matchQuery(q, c.store, c.code, c.corp, c.kana, c.old_code) &&
-    (!sy || c.system === sy)
+  const words    = document.getElementById('c-search').value.toLowerCase().split('\n').map(w=>w.trim()).filter(Boolean);
+  const sys      = document.getElementById('c-system').value;
+  const delivery = document.getElementById('c-delivery').value;
+  filteredCustomers = allData.customers.filter(c =>
+    (words.length === 0 || words.some(w => matchQuery(w, c.store, c.code, c.corp, c.kana, c.old_code, c.store_name, c.corp_name))) &&
+    (!sys      || c.system === sys) &&
+    (!delivery || c.delivery_method === delivery)
   );
-  document.getElementById('c-count').textContent = `${list.length}件表示（全${allData.customers.length}件）`;
-  const noC = '<tr><td colspan="7" class="no-data">該当なし</td></tr>';
-  document.getElementById('c-tbody').innerHTML = list.length === 0 ? noC
-    : list.map(c => `<tr>
-        <td><code>${c.code||''}</code></td>
-        <td class="copyable" title="クリックでコピー" onclick="copyText('${esc(c.store)}')">${c.store||''}</td>
-        <td style="color:var(--text2);">${c.corp||''}</td>
+  const pageSize = parseInt(document.getElementById('c-pagesize')?.value || 50);
+  const start = (cPage - 1) * pageSize;
+  const page = filteredCustomers.slice(start, start + pageSize);
+  const countText = `${filteredCustomers.length}件表示（全${allData.customers.length}件）`;
+  document.getElementById('c-count').textContent = countText;
+  const cct = document.getElementById('c-count-top'); if(cct) cct.textContent = countText;
+  document.getElementById('c-tbody').innerHTML = page.length === 0
+    ? '<tr><td colspan="8" class="no-data">該当なし</td></tr>'
+    : page.map(c => `<tr>
+        <td><code class="copyable" title="クリックでコピー" onclick="copyText('${esc(c.code)}')">${c.code||''}</code></td>
+        <td class="copyable" title="クリックでコピー" onclick="copyText('${esc(c.store||c.store_name)}')">${c.store||c.store_name||''}</td>
+        <td style="color:var(--text2);">${c.corp||c.corp_name||''}</td>
         <td>${c.system||''}</td>
-        <td style="color:var(--text2);">${c.person||''}</td>
+        <td>${c.delivery_method||''}</td>
+        <td style="color:var(--text2);">${c.person||c.our_staff||''}</td>
         <td class="copyable" title="クリックでコピー" onclick="copyText('${esc(c.tel)}')" style="color:var(--text2);">${c.tel||''}</td>
         <td class="copyable" title="クリックでコピー" onclick="copyText('${esc(c.address)}')" style="color:var(--text2);font-size:12px;">${c.address||''}</td>
       </tr>`).join('');
-  document.getElementById('c-cards').innerHTML = list.length === 0
+  document.getElementById('c-cards').innerHTML = page.length === 0
     ? '<div style="text-align:center;padding:40px;color:var(--text2);">該当なし</div>'
-    : list.map(c => `<div class="card">
+    : page.map(c => `<div class="card">
         <div class="card-title">
-          <span class="card-code">${c.code||''}</span>
+          <span class="card-code copyable" onclick="copyText('${esc(c.code)}')">${c.code||''}</span>
           <span style="font-size:12px;color:var(--text2);">${c.system||''}</span>
         </div>
-        <div class="copyable" style="font-size:14px;font-weight:600;margin:4px 0;" title="店舗名をコピー" onclick="copyText('${esc(c.store)}')">${c.store||''}</div>
-        <div class="card-row"><span class="card-label">法人名</span>${c.corp||''}</div>
-        <div class="card-row"><span class="card-label">担当</span>${c.person||''}</div>
+        <div class="copyable" style="font-size:14px;font-weight:600;margin:4px 0;" title="店舗名をコピー" onclick="copyText('${esc(c.store||c.store_name)}')">${c.store||c.store_name||''}</div>
+        <div class="card-row"><span class="card-label">法人名</span>${c.corp||c.corp_name||''}</div>
+        <div class="card-row"><span class="card-label">担当</span>${c.person||c.our_staff||''}</div>
+        ${c.delivery_method ? `<div class="card-row"><span class="card-label">配送</span>${c.delivery_method}</div>` : ''}
         ${c.tel ? `<div class="card-row"><span class="card-label">TEL</span><a href="tel:${c.tel}" style="color:var(--accent);" class="copyable" onclick="event.preventDefault();copyText('${esc(c.tel)}')">${c.tel}</a></div>` : ''}
         ${c.address ? `<div class="card-row copyable" title="住所をコピー" onclick="copyText('${esc(c.address)}')"><span class="card-label">住所</span>${c.zip?'〒'+c.zip+'　':''}${c.address}</div>` : ''}
         ${c.old_code ? `<div class="card-row"><span class="card-label">旧コード</span><code>${c.old_code}</code></div>` : ''}
       </div>`).join('');
+  renderPagination('c-pagination', cPage, filteredCustomers.length, pageSize, 'goToCPage');
 }
 
+// ── 仕入先マスタ ──────────────────────────────────────
+function searchSuppliers() { sPage = 1; renderSuppliers(); }
+function clearSupplierSearch() {
+  document.getElementById('s-search').value = '';
+  sPage = 1; renderSuppliers();
+}
+function goToSPage(n) { sPage = n; renderSuppliers(); }
+
 function renderSuppliers() {
-  const q = document.getElementById('s-search').value.toLowerCase();
+  const words = document.getElementById('s-search').value.toLowerCase().split('\n').map(w=>w.trim()).filter(Boolean);
   filteredSuppliers = allData.suppliers.filter(s =>
-    !q || (s.name||'').toLowerCase().includes(q) || (s.code||'').includes(q) || (s.kana||'').toLowerCase().includes(q)
+    words.length === 0 || words.some(w => matchQuery(w, s.name, s.code, s.kana))
   );
-  document.getElementById('s-count').textContent = `${filteredSuppliers.length}件表示（全${allData.suppliers.length}件）`;
-  document.getElementById('s-tbody').innerHTML = filteredSuppliers.length === 0
+  const pageSize = parseInt(document.getElementById('s-pagesize')?.value || 50);
+  const start = (sPage - 1) * pageSize;
+  const page = filteredSuppliers.slice(start, start + pageSize);
+  const countText = `${filteredSuppliers.length}件表示（全${allData.suppliers.length}件）`;
+  document.getElementById('s-count').textContent = countText;
+  const sct = document.getElementById('s-count-top'); if(sct) sct.textContent = countText;
+  document.getElementById('s-tbody').innerHTML = page.length === 0
     ? '<tr><td colspan="5" class="no-data">該当なし</td></tr>'
-    : filteredSuppliers.map((s,i) => `<tr>
-        <td><code>${s.code||''}</code></td>
+    : page.map((s,i) => `<tr>
+        <td><code class="copyable" title="クリックでコピー" onclick="copyText('${esc(s.code)}')">${s.code||''}</code></td>
         <td class="copyable" title="クリックでコピー" onclick="copyText('${esc(s.name)}')">${s.name||''}</td>
         <td style="color:var(--text2);">${s.kana||''}</td>
         <td class="copyable" title="クリックでコピー" onclick="copyText('${esc(s.tel)}')" style="color:var(--text2);">${s.tel||''}</td>
-        <td><button class="btn-detail" onclick="openSupplierDetail(${i})">詳細</button></td>
+        <td><button class="btn-detail" onclick="openSupplierDetail(${start+i})">詳細</button></td>
       </tr>`).join('');
+  renderPagination('s-pagination', sPage, filteredSuppliers.length, pageSize, 'goToSPage');
 }
 
 function openSupplierDetail(idx) {
