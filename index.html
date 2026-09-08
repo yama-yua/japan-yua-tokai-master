@@ -390,7 +390,7 @@ function clearProductSearch() {
 function goToPPage(n) { pPage = n; renderProducts(); }
 
 function renderProducts() {
-  const words  = document.getElementById('p-search').value.toLowerCase().split('\n').map(w=>w.trim()).filter(Boolean);
+  const words  = document.getElementById('p-search').value.toLowerCase().split(/[\n\s]+/).map(w=>w.trim()).filter(Boolean);
   const dept   = document.getElementById('p-dept').value;
   const status = document.getElementById('p-status').value;
   const tax    = document.getElementById('p-tax').value;
@@ -478,7 +478,7 @@ function clearCustomerSearch() {
 function goToCPage(n) { cPage = n; renderCustomers(); }
 
 function renderCustomers() {
-  const words    = document.getElementById('c-search').value.toLowerCase().split('\n').map(w=>w.trim()).filter(Boolean);
+  const words    = document.getElementById('c-search').value.toLowerCase().split(/[\n\s]+/).map(w=>w.trim()).filter(Boolean);
   const sys      = document.getElementById('c-system').value;
   const delivery = document.getElementById('c-delivery').value;
   filteredCustomers = allData.customers.filter(c =>
@@ -531,7 +531,7 @@ function clearSupplierSearch() {
 function goToSPage(n) { sPage = n; renderSuppliers(); }
 
 function renderSuppliers() {
-  const words = document.getElementById('s-search').value.toLowerCase().split('\n').map(w=>w.trim()).filter(Boolean);
+  const words = document.getElementById('s-search').value.toLowerCase().split(/[\n\s]+/).map(w=>w.trim()).filter(Boolean);
   filteredSuppliers = allData.suppliers.filter(s =>
     words.length === 0 || words.some(w => matchQuery(w, s.name, s.code, s.kana))
   );
